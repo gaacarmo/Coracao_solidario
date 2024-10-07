@@ -44,6 +44,49 @@
         </nav>
         
     </header>
+    <h1>Masculino/Feminino/Infantil/Calçados</h1>
+
+    <div class="cart-icon">
+        <img src="shopping-cart.png" alt="Carrinho de compras">
+    </div>
+
+    <main>
+        <section class="products">
+            <div class="product">
+                <div class="product-image"></div>
+                <p>Text</p>
+            </div>
+            <div class="product">
+                <div class="product-image"></div>
+                <p>Text</p>
+            </div>
+            <div class="product">
+                <div class="product-image"></div>
+                <p>Text</p>
+            </div>
+            <div class="product">
+                <div class="product-image"></div>
+                <p>Text</p>
+            </div>
+            <div class="product">
+                <div class="product-image"></div>
+                <p>Text</p>
+            </div>
+            <div class="product">
+                <div class="product-image"></div>
+                <p>Text</p>
+            </div>
+        </section>
+
+        <aside class="cart">
+            <ul class="cart-items">
+                <li>Produto x</li>
+                <li>Produto y</li>
+                <li>Produto z</li>
+            </ul>
+            <button class="checkout-btn">Finalizar pedido</button>
+        </aside>
+    </main>
     <footer>
         <div class="footer-content">
             <div class="footer-section">
