@@ -4,8 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coração solidario HOME</title>
+    <link rel="stylesheet" href="home.css">
 </head>
 <body>
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper></div>
+    </div>
+
     <nav>
         <div class="logo">
             <a href="#">
@@ -39,3 +45,7 @@
     
 </body>
 </html>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
