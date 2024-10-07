@@ -59,6 +59,7 @@
             <div class="product">
                 <div class="product-image"></div>
                 <p>Text</p>
+                <a href="#">clique aqui</a>
             </div>
             <div class="product">
                 <div class="product-image"></div>
@@ -78,14 +79,7 @@
             </div>
         </section>
 
-        <aside class="cart">
-            <ul class="cart-items">
-                <li>Produto x</li>
-                <li>Produto y</li>
-                <li>Produto z</li>
-            </ul>
-            <button class="checkout-btn">Finalizar pedido</button>
-        </aside>
+        
     </main>
     <footer>
         <div class="footer-content">
