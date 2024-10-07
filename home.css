@@ -1,13 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 nav {
     background-color: #728793; 
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px; 
+    padding: 15px 30px;
     font-family: 'Arial', sans-serif;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    height: 60px; 
+    height: 80px; 
 }
 
 nav .logo {
@@ -16,12 +22,12 @@ nav .logo {
 }
 
 nav .logo img {
-    width: 40px; 
-    margin-right: 8px;
+    width: 50px; 
+    margin-right: 10px;
 }
 
 nav .logo h1 {
-    font-size: 18px; 
+    font-size: 22px;
     font-weight: bold;
     color: black;
 }
@@ -29,10 +35,10 @@ nav .logo h1 {
 nav ul {
     list-style: none;
     display: flex;
-    align-items: center;
+    align-items: center; 
     margin: 0;
     padding: 0;
-    gap: 15px; 
+    gap: 20px; 
 }
 
 nav ul li {
@@ -40,10 +46,10 @@ nav ul li {
 }
 
 nav ul li a {
-    font-size: 16px; 
+    font-size: 18px;
     color: black;
     text-decoration: none;
-    padding: 8px 12px; 
+    padding: 10px 15px;
     transition: background-color 0.3s ease;
     border-radius: 5px;
 }
@@ -55,31 +61,25 @@ nav ul li a:hover {
 nav ul li:first-child a {
     background-color: black;
     color: white;
-    padding: 8px 16px; 
+    padding: 10px 20px;
     border-radius: 20px;
 }
 
 nav ul li:last-child a {
     background-color: white;
     color: black;
-    padding: 8px 16px; 
+    padding: 10px 20px;
     border: none;
     border-radius: 20px;
-    font-size: 14px; 
+    font-size: 16px;
     transition: background-color 0.3s ease;
 }
 
 nav ul li:last-child a:hover {
-    background-color: #e0e0e0;
+    background-color: #e0e0e0;
 }
 
 
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 body {
     font-family: Arial, sans-serif;
