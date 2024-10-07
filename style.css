@@ -1,12 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
   }
   
-  body {
-      font-family: Arial, sans-serif;
-  }
   
   header {
       display: flex;
@@ -22,12 +21,13 @@
   }
   
   .logo img {
-      height: 40px;  
+      height: 60px; 
+    
       margin-right: 10px;
   }
   
   .logo span {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       color: #000;
   }
   
@@ -42,13 +42,14 @@
   
   nav ul li a {
       text-decoration: none;
-      color: #fff;
+      color: #000;
       font-size: 1rem;
       padding: 5px 10px;
       border-radius: 5px;
+      font-weight: bold;
   }
   
-  nav ul li a.active, nav ul li a:hover {
+  .nav ul li a:hover {
       background-color: #000;
       color: #fff;
   }
@@ -83,7 +84,8 @@ h1 {
 .cart-icon {
     position: absolute;
     right: 20px;
-    top: 20px;
+    top: 100px;
+    
 }
 
 .cart-icon img {
@@ -94,7 +96,9 @@ main {
     display: flex;
     width: 100%;
     max-width: 1200px;
-    margin-top: 20px;
+    margin: 20px auto;
+    justify-content: center; 
+    align-items: center; 
 }
 
 .products {
@@ -119,3 +123,45 @@ main {
     border-radius: 8px;
     margin-bottom: 10px;
 }
+footer {
+    background-color: #fff;
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    justify-content: flex-end;
+    
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.footer-section h4 {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.footer-section p {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.footer-bottom {
+    font-size: 12px;
+    color: #666;
+}
+
+.social-icons img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.social-icons img:last-child {
+    margin-right: 0;
+}
+
+
