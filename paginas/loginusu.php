@@ -20,6 +20,7 @@
     </div>
     <button class="button-entrar">Entrar</button>
     <p class="p"><span class="span"><a href="home.php?dir=paginas&file=cadastrousu" class="conta">Não tem conta?</a></span>
+    <p class="p"><span class="span"><a href="#" class="conta">Login Adminstrador</a></span>
 </button></form>
 
 <style>
