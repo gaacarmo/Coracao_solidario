@@ -21,14 +21,13 @@
             </ul>
         </nav>
         <div class="login">
-            <button>Entrar</button>
+            <button><a href="home.php?dir=paginas&file=loginusuario">Entrar</a></button>
         </div>
     </header>
     <div class="cart-icon">
-        <a href=""><img src="assets/shopping-cart.png" alt="Carrinho de compras"></a>
+        <a href="home.php?dir=paginas&file=carrinho"><img src="assets/shopping-cart.png" alt="Carrinho de compras"></a>
     </div>
 
-    <h1>Coração Solidário</h1>
     
     <main class="principal">
         <div class="conteudo">

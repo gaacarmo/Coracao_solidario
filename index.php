@@ -23,7 +23,7 @@
             </ul>
         </nav>
         <div class="login">
-            <button>Entrar</button>
+            <button><a href="home.php?dir=paginas&file=loginusuario">Entrar</a></button>
         </div>
     </header>
     <div class="cart-icon">
