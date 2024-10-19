@@ -1,4 +1,5 @@
-<h1>Login</h1>
+<h1>Login</h1><a href="home.php?dir=paginas&file=loginusu"><img class="voltar" src="assets/de-volta.png" alt=""></a>
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
@@ -186,3 +187,10 @@ if(count($_POST) > 0){
 
     <button class="btn btn-primary btn-lg">Enviar</button>
 </form>
+<style>
+    a .voltar{
+    height: 30px;
+    margin: 0px;
+    right: 100px;
+}  
+</style>
