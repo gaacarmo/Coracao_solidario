@@ -25,41 +25,19 @@
         </div>
     </header>
     <div class="cart-icon">
-        <a href="#"><img src="assets/shopping-cart.png" alt="Carrinho de compras"></a>
+        <a href=""><img src="assets/shopping-cart.png" alt="Carrinho de compras"></a>
     </div>
 
     <h1>Coração Solidário</h1>
-
     
-    <main>
-        <section class="products">
-            <div class="product">
-                <div class="product-image"></div>
-                <p>Text</p>
-            </div>
-            <div class="product">
-                <div class="product-image"></div>
-                <p>Text</p>
-                <a href="#">clique aqui</a>
-            </div>
-            <div class="product">
-                <div class="product-image"></div>
-                <p>Text</p>
-            </div>
-            <div class="product">
-                <div class="product-image"></div>
-                <p>Text</p>
-            </div>
-            <div class="product">
-                <div class="product-image"></div>
-                <p>Text</p>
-            </div>
-            <div class="product">
-                <div class="product-image"></div>
-                <p>Text</p>
-            </div>
-        </section>
+    <main class="principal">
+        <div class="conteudo">
+        <?php
+                include(__DIR__ . "/{$_GET['dir']}/{$_GET['file']}.php");
+            ?>
+        </div>
     </main>
+    
         <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -79,7 +57,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© Todos os direitos reservados | coração solidário | 2024</p>
+            <>© Todos os direitos reservados | coração solidário | 2024</>
         </div>
     </footer>
 </body>

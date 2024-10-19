@@ -1,91 +1,77 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-nav {
-    background-color: #728793; 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    font-family: 'Arial', sans-serif;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    height: 80px; 
-}
-
-nav .logo {
-    display: flex;
-    align-items: center;
-}
-
-nav .logo img {
-    width: 50px; 
-    margin-right: 10px;
-}
-
-nav .logo h1 {
-    font-size: 22px;
-    font-weight: bold;
-    color: black;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    align-items: center; 
-    margin: 0;
-    padding: 0;
-    gap: 20px; 
-}
-
-nav ul li {
-    display: inline-block;
-}
-
-nav ul li a {
-    font-size: 18px;
-    color: black;
-    text-decoration: none;
-    padding: 10px 15px;
-    transition: background-color 0.3s ease;
-    border-radius: 5px;
-}
-
-nav ul li a:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
-nav ul li:first-child a {
-    background-color: black;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 20px;
-}
-
-nav ul li:last-child a {
-    background-color: white;
-    color: black;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 20px;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
-
-nav ul li:last-child a:hover {
-    background-color: #e0e0e0;
-}
-
-
-
-body {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+  }
+  
+  
+  header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #7b8794;  
+      padding: 10px 20px;
+  }
+  
+  .logo {
+      display: flex;
+      align-items: center;
+  }
+  
+  .logo img {
+      height: 60px; 
+    
+      margin-right: 10px;
+  }
+  
+  .logo span {
+      font-size: 1.8rem;
+      color: #000;
+  }
+  
+  nav ul {
+      display: flex;
+      list-style: none;
+  }
+  
+  nav ul li {
+      margin: 0 10px;
+  }
+  
+  nav ul li a {
+      text-decoration: none;
+      color: #000;
+      font-size: 1rem;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-weight: bold;
+  }
+  
+  .nav ul li a:hover {
+      background-color: #000;
+      color: #fff;
+  }
+  
+  .login button {
+      background-color: #fff;
+      color: #000;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+  }
+  
+  .login button:hover {
+      background-color: #e0e0e0;
+  }
+  body {
     font-family: Arial, sans-serif;
-    display: flex;
+    
     flex-direction: column;
     align-items: center;
+    left: 500px;
     background-color: #f5f5f5;
 }
 
@@ -98,7 +84,8 @@ h1 {
 .cart-icon {
     position: absolute;
     right: 20px;
-    top: 20px;
+    top: 100px;
+    
 }
 
 .cart-icon img {
@@ -109,7 +96,9 @@ main {
     display: flex;
     width: 100%;
     max-width: 1200px;
-    margin-top: 20px;
+    margin: 20px auto;
+    justify-content: center; 
+    align-items: center; 
 }
 
 .products {
@@ -134,56 +123,6 @@ main {
     border-radius: 8px;
     margin-bottom: 10px;
 }
-
-.cart {
-    width: 250px;
-    background-color: #87CEEB;
-    padding: 20px;
-    border-radius: 8px;
-    margin-left: 20px;
-}
-
-.cart-items {
-    list-style: none;
-    margin-bottom: 20px;
-}
-
-.cart-items li {
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-.checkout-btn {
-    background-color: #00008B;
-    color: white;
-    border: none;
-    padding: 10px;
-    width: 100%;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 8px;
-}
-
-.checkout-btn:hover {
-    background-color: #000080;
-}
-
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f5f5f5;
-}
-
 footer {
     background-color: #fff;
     width: 100%;
@@ -224,5 +163,4 @@ footer {
 .social-icons img:last-child {
     margin-right: 0;
 }
-
 
