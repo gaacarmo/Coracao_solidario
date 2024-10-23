@@ -1,3 +1,3 @@
 <div class="titulo">
-    <h1>OIII</h1>
+    <h1>Carrinho</h1>
 </div>

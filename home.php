@@ -8,14 +8,14 @@
 <body>
     <header>
     <div class="logo">
-            <a href="index.php"><img class="logo-1" src="assets/logo coracao.png" alt="Coração Solidário">
-            </a>
-            
-            <a>Coração Solidário</a>
-        </div>
+        <a href="index.php">
+            <img class="logo-1" src="assets/logo coracao.png" alt="Coração Solidário">
+         </a>
+        <span>Coração Solidário</span>
+    </div>
         <nav>
             <ul>
-                <li><a href="home.php?dir=masculino_pag&file=masculino" >Masculino</a></li>
+                <li><a href="home.php?dir=masculino&file=masculino_produtos" >Masculino</a></li>
                 <li><a href="#">Feminino</a></li>
                 <li><a href="#">Infantil</a></li>
                 <li><a href="#">Calçados</a></li>
@@ -75,7 +75,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <>© Todos os direitos reservados | coração solidário | 2024</>
+            © Todos os direitos reservados | coração solidário | 2024</>
         </div>
     </footer>
 </body>

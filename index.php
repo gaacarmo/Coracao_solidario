@@ -8,14 +8,14 @@
 <body>
     <header>
         <div class="logo">
-            <a href="home.php"><img class="logo-1" src="assets/logo coracao.png" alt="Coração Solidário">
+            <a href="index.php "><img class="logo-1" src="assets/logo coracao.png" alt="Coração Solidário">
             </a>
             
             <a>Coração Solidário</a>
         </div>
         <nav>
             <ul>
-                <li><a href="#" class="active">Masculino</a></li>
+                <li><a href="home.php?dir=masculino&file=masculino_produtos" class="active">Masculino</a></li>
                 <li><a href="#">Feminino</a></li>
                 <li><a href="#">Infantil</a></li>
                 <li><a href="#">Calçados</a></li>
@@ -35,28 +35,33 @@
         <section class="products">
             <div class="product">
                 <div class="product-image"></div>
-                <p>Text</p>
+                <p class="texto-produto">Quero doar!</p>
+                <a class="btn-index" href='home.php?dir=paginas&file=form_doar'>Clique para doar</a>
             </div>
             <div class="product">
                 <div class="product-image"></div>
-                <p>Text</p>
-                <a href="#">clique aqui</a>
+                <p class="texto-produto">Masculino</p>
+                <a class="btn-index" href="home.php?dir=masculino&file=masculino_produtos">Acessar</a>
             </div>
             <div class="product">
                 <div class="product-image"></div>
-                <p>Text</p>
+                <p class="texto-produto">Text</p>
+                <a class="btn-index" href=#>Acessar</a>
             </div>
             <div class="product">
                 <div class="product-image"></div>
-                <p>Text</p>
+                <p class="texto-produto">Text</p>
+                <a class="btn-index" href=#>Acessar</a>
             </div>
             <div class="product">
                 <div class="product-image"></div>
-                <p>Text</p>
+                <p class="texto-produto">Text</p>
+                <a class="btn-index" href=#>Acessar</a>
             </div>
             <div class="product">
                 <div class="product-image"></div>
-                <p>Text</p>
+                <p class="texto-produto">Text</p>
+                <a class="btn-index" href=#>Acessar</a>
             </div>
         </section>
     </main>

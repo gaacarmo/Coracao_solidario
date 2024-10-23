@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <button class="button-entrar">Entrar</button>
 </form>
 
-<!-- Exibir erros no HTML -->
+
 <?php if (!empty($erros)): ?>
     <div class="erros">
         <?php foreach ($erros as $erro): ?>
