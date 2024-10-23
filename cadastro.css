@@ -1,3 +1,26 @@
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #A4C8E1;
+    height: auto;
+    width: auto;
+    border: 2px solid #264143;
+    border-radius: 20px;
+    box-shadow: 3px 4px 0px 1px #E99F4C;
+}
+
+.form-control {
+    outline: none;
+  border: 2px solid #264143;
+  box-shadow: 3px 4px 0px 1px #E99F4C;
+  width: 290px;
+  padding: 12px 10px;
+  border-radius: 4px;
+  font-size: 15px;
+}
+
 a .voltar{
     height: 30px;
     margin: 0px;
@@ -6,11 +29,9 @@ a .voltar{
 }  
     .alerta{
         color: #FF0000;
-        
         margin: 10px;
-        
     }
-    /* From Uiverse.io by ernestnash */ 
+   
 .btn {
     display: inline-block;
     padding: 0.9rem 1.8rem;
