@@ -1,4 +1,4 @@
-DROP DATABASE brecho;
+DROP DATABASE IF EXISTS brecho;
 CREATE DATABASE brecho;
 USE brecho;
 
