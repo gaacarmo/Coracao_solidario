@@ -1,6 +1,3 @@
-<h1>Cadastro</h1>
-<a href="home.php?dir=paginas&file=loginusu"><img class="voltar" src="assets/de-volta.png" alt=""></a>
-
 <?php
 function validaCPF($cpf) {
     $cpf = preg_replace('/[^0-9]/', '', $cpf);
@@ -127,7 +124,10 @@ if(count($_POST) > 0){
 
 ?>
 
-<link rel="stylesheet" href="cadastro.css">
+
+<link rel="stylesheet" href="./cadastro.css">
+<h1>Cadastro</h1>
+<a href="home.php?dir=paginas&file=loginusu"><img class="voltar" src="assets/de-volta.png" alt=""></a>
 
 <form action="#" method="post">
     <div class="form-row">
