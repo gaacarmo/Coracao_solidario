@@ -7,13 +7,15 @@
 </head>
 <body>
     <header>
-        <div class="logo">
-            <img class="logo-1" src="assets/logo coracao.png" alt="Coração Solidário">
+    <div class="logo">
+            <a href="index.php"><img class="logo-1" src="assets/logo coracao.png" alt="Coração Solidário">
+            </a>
+            
             <a>Coração Solidário</a>
         </div>
         <nav>
             <ul>
-                <li><a href="#" class="active">Masculino</a></li>
+                <li><a href="home.php?dir=masculino_pag&file=masculino" >Masculino</a></li>
                 <li><a href="#">Feminino</a></li>
                 <li><a href="#">Infantil</a></li>
                 <li><a href="#">Calçados</a></li>
@@ -30,12 +32,29 @@
 
     
     <main class="principal">
-        <div class="conteudo">
+    <div class="conteudo">
         <?php
-                include(__DIR__ . "/{$_GET['dir']}/{$_GET['file']}.php");
-            ?>
-        </div>
-    </main>
+        // Verifica se 'dir' e 'file' estão definidos e não estão vazios
+        if (isset($_GET['dir']) && isset($_GET['file']) && !empty($_GET['dir']) && !empty($_GET['file'])) {
+            $dir = preg_replace('/[^a-zA-Z0-9-_]/', '', $_GET['dir']); // Sanitiza o nome do diretório
+            $file = preg_replace('/[^a-zA-Z0-9-_]/', '', $_GET['file']); // Sanitiza o nome do arquivo
+
+            $path = __DIR__ . "/{$dir}/{$file}.php";
+
+            // Verifica se o arquivo realmente existe antes de incluir
+            if (file_exists($path)) {
+                include($path);
+            } else {
+                echo "Arquivo não encontrado!";
+            }
+        } else {
+            // Inclui uma página padrão ou exibe uma mensagem quando 'dir' e 'file' não são fornecidos
+            include(__DIR__ . "/home.php"); // Ou substitua por um arquivo padrão da sua escolha
+        }
+        ?>
+    </div>
+</main>
+
     
         <footer>
         <div class="footer-content">
