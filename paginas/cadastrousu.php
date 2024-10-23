@@ -1,18 +1,16 @@
-<h1>Login</h1><a href="home.php?dir=paginas&file=loginusu"><img class="voltar" src="assets/de-volta.png" alt=""></a>
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+<h1>Cadastro</h1>
+<a href="home.php?dir=paginas&file=loginusu"><img class="voltar" src="assets/de-volta.png" alt=""></a>
 
 <?php
 function validaCPF($cpf) {
     $cpf = preg_replace('/[^0-9]/', '', $cpf);
     
-   
+
     if (strlen($cpf) != 11) {
         return false;
     }
 
- 
+
     if (preg_match('/(\d)\1{10}/', $cpf)) {
         return false;
     }
@@ -44,12 +42,12 @@ if(count($_POST) > 0){
     $dados = $_POST;
     $erros = [];
 
+    // Validações
     if(isset($dados['nome_completo']) && trim($dados['nome_completo']) === ""){
-
         $erros['nome_completo'] = "Nome é obrigatório";
     }
 
-    if(isset($dados[ "Data_nascimento"])) {
+    if(isset($dados["Data_nascimento"])) {
         $data = DateTime::createFromFormat('d/m/Y', $dados['Data_nascimento']);
         if (!$data || $data->format('d/m/Y') !== $dados['Data_nascimento']) {
             $erros['Data_nascimento'] = 'Data deve estar no padrão dd/mm/aaaa';
@@ -62,52 +60,74 @@ if(count($_POST) > 0){
     
     if(isset($dados['Senha_cliente'])){
         $senhaUsuario = trim($dados['Senha_cliente']);
-        if(strlen($senhaUsuario) < 3 || strlen($senhaUsuario) >15){
+        if(strlen($senhaUsuario) < 3 || strlen($senhaUsuario) > 20){
             $erros['Senha_cliente'] = "A senha deve ter entre 3 e 20 caracteres";
         }
     }
 
-    
     if(isset($dados['CPF']) && !validaCPF($dados['CPF'])) {
         $erros['CPF'] = "CPF inválido";
     }
-    $salario = str_replace(',', '.', $dados['Telefone']);
-    if(isset($dados['Telefone'])&& !validaTelefone($dados['Telefone'])){
+
+    if(isset($dados['Telefone']) && !validaTelefone($dados['Telefone'])){
         $erros['Telefone'] = "Telefone inválido";
     }
-    if(isset($dados['nome_usuario'])){
-        $nomeUsuario = trim($dados['nome_usuario']);
-        if(strlen($nomeUsuario) < 3 || strlen($nomeUsuario) > 20) {
-            $erros['nome_usuario'] = "O nome de usuário deve ter entre 3 e 20 caracteres";
-        }
-    }
 
+    if(isset($dados['Usuario_cliente'])){
+        $nomeUsuario = trim($dados['Usuario_cliente']);
+        if(strlen($nomeUsuario) < 3 || strlen($nomeUsuario) > 20) {
+            $erros['Usuario_cliente'] = "O nome de usuário deve ter entre 3 e 20 caracteres";
+        }
+    } 
+
+    // Se não houver erros, prosseguir com a inserção
     if(count($erros) == 0){
         require_once "conexao.php";
+        $conexao = novaConexao();   
 
-        $sql= "INSERT INTO Usuario_geral
-        (nome_completo,Data_nascimento, Email, senha_cliente, CPF, Telefone)
-        VALUES (?,?,?,?,?,?)";
-
-        $conexao = novaConexao();
-        $stmt = $conexao->prepare($sql);
-        $params = [
+        // Inserir em Usuario_geral
+        $sql1 = "INSERT INTO Usuario_geral (nome_completo, Data_nascimento, Email, CPF, Telefone) VALUES (?, ?, ?, ?, ?)";
+        $stmt1 = $conexao->prepare($sql1);
+        $params1 = [
             $dados['nome_completo'],
-            $dados ? $data->format('Y-m-d') : null, #caso data seja seja preeenchido ele passa para a verficaçao, caso nao, sera nulo
+            $data ? $data->format('Y-m-d') : null,
             $dados['Email'],
-            $dados['Senha_cliente'],
             $dados['CPF'],
             $dados['Telefone'],
         ];
-        $stmt->bind_param("ssssss", ...$params); #parametros s= string | i = int | d = decimal
-        
+        $stmt1->bind_param("sssss", ...$params1);
 
-        if($stmt->execute()){
-            unset($dados); 
+        // Executar a primeira inserção
+        if($stmt1->execute()){
+            // Inserir em Cliente
+            $sql2 = "INSERT INTO Cliente (Usuario_cliente, Senha_cliente) VALUES (?, ?)";
+            $stmt2 = $conexao->prepare($sql2);
+
+            $params2 = [
+                $dados['Usuario_cliente'], // Garantido que não seja nulo
+                $dados['Senha_cliente'],
+            ];
+            $stmt2->bind_param("ss", ...$params2);
+
+            // Executar a segunda inserção
+            if($stmt2->execute()){
+                unset($dados); 
+                // Opcional: redirecionar ou mostrar mensagem de sucesso
+            } else {
+                // Tratar erros na segunda inserção
+                $erros['insert'] = "Erro ao inserir cliente: " . $stmt2->error;
+            }
+        } else {
+            // Tratar erros na primeira inserção
+            $erros['insert'] = "Erro ao inserir usuário: " . $stmt1->error;
         }
     }
 }
+
+
 ?>
+
+<link rel="stylesheet" href="cadastro.css">
 
 <form action="#" method="post">
     <div class="form-row">
@@ -117,7 +137,7 @@ if(count($_POST) > 0){
                 class="form-control <?= isset($erros['nome_completo']) ? 'is-invalid' : '' ?>"
                 id="nome_completo" name="nome_completo" placeholder="Digite seu Nome..."
                 value="<?= isset($dados['nome_completo']) ? $dados['nome_completo'] : '' ?>">
-            <div class="invalid-feedback">
+            <div class="alerta">
                 <?= isset($erros['nome_completo']) ? $erros['nome_completo'] : '' ?>
             </div>
         </div>
@@ -126,7 +146,7 @@ if(count($_POST) > 0){
             <input type="text" class="form-control <?= isset($erros['Data_nascimento']) ? 'is-invalid' : '' ?>" 
                 id="Data_nascimento" name="Data_nascimento" placeholder="dd/mm/aaaa"
                 value="<?= isset($dados['Data_nascimento']) ? $dados['Data_nascimento'] : '' ?>">
-            <div class="invalid-feedback">
+            <div class="alerta">
                 <?= isset($erros['Data_nascimento']) ? $erros['Data_nascimento'] : '' ?>
             </div>
         </div>
@@ -137,7 +157,7 @@ if(count($_POST) > 0){
             <label for="Email">Email</label>
             <input type="text" class="form-control <?= isset($erros['Email']) ? 'is-invalid' : '' ?>" 
                 id="Email" name="Email" placeholder="Digite seu email..." value="<?= isset($dados['Email']) ? $dados['Email'] : '' ?>">
-            <div class="invalid-feedback">
+            <div class="alerta">
                 <?= isset($erros['Email']) ? $erros['Email'] : '' ?>
             </div>
         </div>
@@ -145,7 +165,7 @@ if(count($_POST) > 0){
             <label for="Senha_cliente">Senha</label>
             <input type="password" class="form-control <?= isset($erros['Senha_cliente']) ? 'is-invalid' : '' ?>" 
                 id="Senha_cliente" name="Senha_cliente" placeholder="Digite sua Senha" value="<?= isset($dados['Senha_cliente']) ? $dados['Senha_cliente'] : '' ?>">
-            <div class="invalid-feedback">
+            <div class="alerta">
                 <?= isset($erros['Senha_cliente']) ? $erros['Senha_cliente'] : '' ?>
             </div>
         </div>
@@ -153,12 +173,12 @@ if(count($_POST) > 0){
 
     <div class="form-row">
     <div class="form-group col-md-12">
-            <label for="nome_usuario">Nome de Usuário</label>
-            <input type="text" class="form-control <?= isset($erros['nome_usuario']) ? 'is-invalid' : '' ?>" 
-                id="nome_usuario" name="nome_usuario" placeholder="Escolha um Nome de Usuário..." 
-                value="<?= isset($dados['nome_usuario']) ? $dados['nome_usuario'] : '' ?>">
-            <div class="invalid-feedback">
-                <?= isset($erros['nome_usuario']) ? $erros['nome_usuario'] : '' ?>
+            <label for="Usuario_cliente">Nome de Usuário</label>
+            <input type="text" class="form-control <?= isset($erros['Usuario_cliente']) ? 'is-invalid' : '' ?>" 
+                id="Usuario_cliente" name="Usuario_cliente" placeholder="Escolha um Nome de Usuário..." 
+                value="<?= isset($dados['Usuario_cliente']) ? $dados['Usuario_cliente'] : '' ?>">
+            <div class="alerta">
+                <?= isset($erros['Usuario_cliente']) ? $erros['Usuario_cliente'] : '' ?>
             </div>
         </div>
 
@@ -169,7 +189,7 @@ if(count($_POST) > 0){
                 id="CPF" name="CPF" 
                 placeholder="xxxxxxxxxxx" 
                 value="<?= isset($dados['CPF']) ? $dados['CPF'] : '' ?>">
-            <div class="invalid-feedback">
+            <div class="alerta">
                 <?= isset($erros['CPF']) ? $erros['CPF'] : '' ?>
             </div>
         </div>
@@ -178,19 +198,14 @@ if(count($_POST) > 0){
             <label for="Telefone">Telefone</label>
             <input type="text" class="form-control <?= isset($erros['Telefone']) ? 'is-invalid' : '' ?>" 
                 id="Telefone" name="Telefone" placeholder="dd000000000" value="<?= isset($dados['Telefone']) ? $dados['Telefone'] : '' ?>">
-            <div class="invalid-feedback">
+            <div class="alerta">
                 <?= isset($erros['Telefone']) ? $erros['Telefone'] : '' ?>
             </div>
 
         </div>
     </div>
 
-    <button class="btn btn-primary btn-lg">Enviar</button>
+        <div class= "botao">
+            <button class="btn" type="submit">Cadastrar</button>
+        </div>
 </form>
-<style>
-    a .voltar{
-    height: 30px;
-    margin: 0px;
-    right: 100px;
-}  
-</style>
