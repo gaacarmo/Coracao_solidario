@@ -187,7 +187,7 @@ if(count($_POST) > 0){
             <input type="number" 
                 class="form-control <?= isset($erros['CPF']) ? 'is-invalid' : '' ?>" 
                 id="CPF" name="CPF" 
-                placeholder="xxxxxxxxxxx" 
+                placeholder="xxx.xxx.xxx-xx" 
                 value="<?= isset($dados['CPF']) ? $dados['CPF'] : '' ?>">
             <div class="alerta">
                 <?= isset($erros['CPF']) ? $erros['CPF'] : '' ?>
@@ -197,7 +197,7 @@ if(count($_POST) > 0){
         <div class="form-group col-md-6">
             <label for="Telefone">Telefone</label>
             <input type="text" class="form-control <?= isset($erros['Telefone']) ? 'is-invalid' : '' ?>" 
-                id="Telefone" name="Telefone" placeholder="dd000000000" value="<?= isset($dados['Telefone']) ? $dados['Telefone'] : '' ?>">
+                id="Telefone" name="Telefone" placeholder="(DDD)00000000" value="<?= isset($dados['Telefone']) ? $dados['Telefone'] : '' ?>">
             <div class="alerta">
                 <?= isset($erros['Telefone']) ? $erros['Telefone'] : '' ?>
             </div>
