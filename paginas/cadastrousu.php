@@ -129,12 +129,13 @@ if(count($_POST) > 0){
 <h1>Cadastro</h1>
 <a href="home.php?dir=paginas&file=loginusu"><img class="voltar" src="assets/de-volta.png" alt=""></a>
 
-<form action="#" method="post">
+<form action="#" method="post" class="form">
     <div class="form-row">
         <div class="form-group col-md-9">
             <label for="nome_completo">Nome</label>
+            <br>
             <input type="text" 
-                class="form-control <?= isset($erros['nome_completo']) ? 'is-invalid' : '' ?>"
+                class="input <?= isset($erros['nome_completo']) ? 'is-invalid' : '' ?>"
                 id="nome_completo" name="nome_completo" placeholder="Digite seu Nome..."
                 value="<?= isset($dados['nome_completo']) ? $dados['nome_completo'] : '' ?>">
             <div class="alerta">
@@ -143,7 +144,8 @@ if(count($_POST) > 0){
         </div>
         <div class="form-group col-md-3">
             <label for="Data_nascimento">Data de nascimento</label>
-            <input type="text" class="form-control <?= isset($erros['Data_nascimento']) ? 'is-invalid' : '' ?>" 
+            
+            <input type="text" class="input <?= isset($erros['Data_nascimento']) ? 'is-invalid' : '' ?>" 
                 id="Data_nascimento" name="Data_nascimento" placeholder="dd/mm/aaaa"
                 value="<?= isset($dados['Data_nascimento']) ? $dados['Data_nascimento'] : '' ?>">
             <div class="alerta">
@@ -151,11 +153,11 @@ if(count($_POST) > 0){
             </div>
         </div>
     </div>
-
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="Email">Email</label>
-            <input type="text" class="form-control <?= isset($erros['Email']) ? 'is-invalid' : '' ?>" 
+            <br>
+            <input type="text" class="input <?= isset($erros['Email']) ? 'is-invalid' : '' ?>" 
                 id="Email" name="Email" placeholder="Digite seu email..." value="<?= isset($dados['Email']) ? $dados['Email'] : '' ?>">
             <div class="alerta">
                 <?= isset($erros['Email']) ? $erros['Email'] : '' ?>
@@ -163,7 +165,8 @@ if(count($_POST) > 0){
         </div>
         <div class="form-group col-md-6">
             <label for="Senha_cliente">Senha</label>
-            <input type="password" class="form-control <?= isset($erros['Senha_cliente']) ? 'is-invalid' : '' ?>" 
+            <br>
+            <input type="password" class="input <?= isset($erros['Senha_cliente']) ? 'is-invalid' : '' ?>" 
                 id="Senha_cliente" name="Senha_cliente" placeholder="Digite sua Senha" value="<?= isset($dados['Senha_cliente']) ? $dados['Senha_cliente'] : '' ?>">
             <div class="alerta">
                 <?= isset($erros['Senha_cliente']) ? $erros['Senha_cliente'] : '' ?>
@@ -174,7 +177,8 @@ if(count($_POST) > 0){
     <div class="form-row">
     <div class="form-group col-md-12">
             <label for="Usuario_cliente">Nome de Usuário</label>
-            <input type="text" class="form-control <?= isset($erros['Usuario_cliente']) ? 'is-invalid' : '' ?>" 
+            <br>
+            <input type="text" class="input <?= isset($erros['Usuario_cliente']) ? 'is-invalid' : '' ?>" 
                 id="Usuario_cliente" name="Usuario_cliente" placeholder="Escolha um Nome de Usuário..." 
                 value="<?= isset($dados['Usuario_cliente']) ? $dados['Usuario_cliente'] : '' ?>">
             <div class="alerta">
@@ -184,8 +188,9 @@ if(count($_POST) > 0){
 
         <div class="form-group col-md-6">
             <label for="CPF">CPF</label>
+            
             <input type="number" 
-                class="form-control <?= isset($erros['CPF']) ? 'is-invalid' : '' ?>" 
+                class="input <?= isset($erros['CPF']) ? 'is-invalid' : '' ?>" 
                 id="CPF" name="CPF" 
                 placeholder="xxx.xxx.xxx-xx" 
                 value="<?= isset($dados['CPF']) ? $dados['CPF'] : '' ?>">
@@ -196,7 +201,7 @@ if(count($_POST) > 0){
 
         <div class="form-group col-md-6">
             <label for="Telefone">Telefone</label>
-            <input type="text" class="form-control <?= isset($erros['Telefone']) ? 'is-invalid' : '' ?>" 
+            <input type="text" class="input <?= isset($erros['Telefone']) ? 'is-invalid' : '' ?>" 
                 id="Telefone" name="Telefone" placeholder="(DDD)00000000" value="<?= isset($dados['Telefone']) ? $dados['Telefone'] : '' ?>">
             <div class="alerta">
                 <?= isset($erros['Telefone']) ? $erros['Telefone'] : '' ?>

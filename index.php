@@ -34,42 +34,42 @@
     <main class="principal">
         <section class="products">
             <div class="product">
-                <div class="product-image">
+                <div class="img-produto ">
                     <img src="assets/doacao.jpg" alt="doação">
                 </div>
                 <p class="texto-produto">Quero doar!</p>
                 <a class="btn-index" href='home.php?dir=paginas&file=form_doar'>Clique para doar</a>
             </div>
             <div class="product">
-                <div class="product-image">
+                <div class="img-produto">
                 <img src="assets/masculino.webp" alt="">
                 </div>
                 <p class="texto-produto">Masculino</p>
                 <a class="btn-index" href="home.php?dir=masculino&file=masculino_produtos">Acessar</a>
             </div>
             <div class="product">
-                <div class="product-image">
+                <div class="img-produto ">
                 <img src="assets/feminino.jpg" alt="">    
                 </div>
                 <p class="texto-produto">Feminino</p>
                 <a class="btn-index" href=#>Acessar</a>
             </div>
             <div class="product">
-                <div class="product-image">
+                <div class="img-produto ">
                 <img src="assets/infantil.jpg" alt="">
                 </div>
                 <p class="texto-produto">Infantil</p>
                 <a class="btn-index" href=#>Acessar</a>
             </div>
             <div class="product">
-                <div class="product-image">
+                <div class="img-produto ">
                     <img src="assets/calçados.webp" alt="">
                 </div>
                 <p class="texto-produto">Calçados</p>
                 <a class="btn-index" href=#>Acessar</a>
             </div>
             <div class="product">
-                <div class="product-image">
+                <div class="img-produto ">
                     <img src="assets/Sobre nós.png" alt="">
                 </div>
                 <p class="texto-produto">Sobre nós</p>

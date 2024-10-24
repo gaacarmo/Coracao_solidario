@@ -133,10 +133,18 @@ main {
 
 .products {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
     gap: 20px;
     flex: 1;
 }
+
+/* Limite máximo de 4 colunas */
+@media (min-width: 1200px) {
+    .products {
+        grid-template-columns: repeat(3, 1fr); /* Máximo de 4 colunas */
+    }
+}
+
 
 .product {
     background-color: #fff;
@@ -146,14 +154,15 @@ main {
     border-radius: 8px;
 }
 
-.product-image img {
-    width: 80%; /* Ajusta a largura da imagem ao tamanho do contêiner */
-    height: auto; /* Mantém a proporção da imagem */
-    object-fit: cover; /* Garante que a imagem preencha o contêiner sem distorcer */
-    border-radius: 8px; /* Adiciona bordas arredondadas, opcional */
-    width: 350px;
+.img-produto img {
+    width: 100%; /* A imagem ocupará 100% do contêiner */
+    object-fit: cover; /* Mantém a proporção sem distorção */
+    border-radius: 8px;
+    max-width: 350px; /* Largura máxima */
     height: 200px;
 }
+
+
 
 footer {
     background-color: #fff;

@@ -46,7 +46,7 @@
   
   .inputForm:focus-within {
     border: 1.5px solid #2d79f3;
-  }
+  } 
   
   .flex-row {
     display: flex;
