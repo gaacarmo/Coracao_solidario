@@ -75,7 +75,12 @@
             </div>
         </div>
         <div class="footer-bottom">
-            © Todos os direitos reservados | coração solidário | 2024</>
+            "Cada um contribua conforme determinou no coração, não com pesar nem por obrigação, pois Deus ama a quem dá com alegria"
+        </div>
+        <br>
+        <div class="footer-bottom">
+            
+            © Todos osa direitos reservados | coração solidário | 2024</>
         </div>
     </footer>
 </body>
