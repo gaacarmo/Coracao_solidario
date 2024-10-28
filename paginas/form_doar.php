@@ -1,7 +1,7 @@
 <h1>Fazer doação</h1>
 <link rel="stylesheet" href="./form_doar.css">
 
-<form class="form" action="index.php" method="POST" enctype="multipart/form-data">
+<form class="form" action="home.php?dir=paginas&file=sucessodoar" method="POST" enctype="multipart/form-data">
     <div>
         <label class="espaçamento" for="NomeProduto">Qual o nome do produto?</label>
         <input type="text" name="NomeProduto" id="NomeProduto" placeholder="Ex: Camisa" class="input" required>
@@ -76,7 +76,7 @@
 
     <div>
         <button type="reset">Limpar formulário</button>
-        <button type="submit"><a href="index.php">Enviar</a></button>
+        <button type="submit">Enviar </button>
         <button type="button" onclick="window.location.href='index.php'">Cancelar</button> <!-- Retorna para a página principal --->
     </div>
 </form>
