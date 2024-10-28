@@ -1,7 +1,7 @@
 <h1>Fazer doação</h1>
 <link rel="stylesheet" href="./form_doar.css">
 
-<form class="form" method="POST" enctype="multipart/form-data">
+<form class="form" action="index.php" method="POST" enctype="multipart/form-data">
     <div>
         <label class="espaçamento" for="NomeProduto">Qual o nome do produto?</label>
         <input type="text" name="NomeProduto" id="NomeProduto" placeholder="Ex: Camisa" class="input" required>
@@ -33,7 +33,11 @@
             <option value="P">P</option>
             <option value="M">M</option>
             <option value="G">G</option>
-            <option value="GG">GG</option>
+            <option value="36">36</option>
+            <option value="38">38</option>
+            <option value="40">40</option>
+            <option value="42">42</option>
+            <option value="outro">Outro</option>
         </select>
     </div>
 
@@ -72,7 +76,7 @@
 
     <div>
         <button type="reset">Limpar formulário</button>
-        <button type="submit">Enviar</button>
+        <button type="submit"><a href="index.php">Enviar</a></button>
         <button type="button" onclick="window.location.href='index.php'">Cancelar</button> <!-- Retorna para a página principal --->
     </div>
 </form>
@@ -83,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once "conexao.php";
     $conexao = novaConexao();
 
-    $sql1 = "INSERT INTO Produto (Nome, Categoria, Publico_alvo, Descricao, Condicao) VALUES (?, ?, ?, ?,?)";
+    $sql1 = "INSERT INTO Produto (Nome, Categoria, Publico_alvo, Descricao, Condicao) VALUES (?, ?, ?, ?, ?)";
     $stmt1 = $conexao->prepare($sql1);
     $params1 = [
         $dados['NomeProduto'],
@@ -95,61 +99,62 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt1->bind_param("sssss", ...$params1);
 
     if ($stmt1->execute()) {
-        $produtoID = $conexao->insert_id; // Como o ID é auto incrementado no sql, ele recupera o ID da última linha adicionada no $stmt1
+        $produtoID = $conexao->insert_id;
 
-        // Se a categoria escolhida pelo usuário é calçado, então os dados restantes serão adicionados na tabela calcado
         if ($dados['Categoria'] == 'Calçado') {
             $sql2 = "INSERT INTO Calcado (Tamanho_calcado, Cor_calcado, ID_produto) VALUES (?, ?, ?)";
             $stmt2 = $conexao->prepare($sql2);
             $params2 = [
                 $dados['Tamanho'],
                 $dados['Cor'],
-                $produtoID // Adiciona o ID do produto aqui
+                $produtoID
             ];
             $stmt2->bind_param("ssi", ...$params2);
 
-            //Aqui vai ser adicionado na tabela Roupa
         } else {
             $sql2 = "INSERT INTO Roupa (Tamanho_roupa, Cor_roupa, ID_produto) VALUES (?, ?, ?)";
             $stmt2 = $conexao->prepare($sql2);
             $params2 = [
                 $dados['Tamanho'],
                 $dados['Cor'],
-                $produtoID // Adiciona o ID do produto aqui
+                $produtoID
             ];
             $stmt2->bind_param("ssi", ...$params2);
         }
 
         if ($stmt2->execute()) {
-            // 4. Processamento das imagens
-            $uploadDir = 'uploads/'; //Define a pasta em que será gravado a imagem, não esqueçam de criar uma pasta 'uploads' para testar o código
-            if (isset($_FILES['Imagem']) && is_array($_FILES['Imagem']['tmp_name'])) {//$_FILES verifica se foi enviado do html alguma imagem, isso no input:file
-                //o a outra parte do && verifica se é um array, pois permitimos que possa ser enviado mais de uma imagem
-                foreach ($_FILES['Imagem']['tmp_name'] as $key => $tmpName) { // itera sobre cada elemento do array $_FILES['Imagem']['tmp_name']
-                    $imageName = basename($_FILES['Imagem']['name'][$key]); //Acessa o nome original do arquivo enviado, usando o índice $key do arquivo que está sendo processado atualmente.
-                    $targetFile = $uploadDir . $imageName; //define para onde exatamente vai ser enviado o arquivo
+            $uploadDir = 'uploads/';
+            if (isset($_FILES['Imagem']) && is_array($_FILES['Imagem']['tmp_name'])) {
+                foreach ($_FILES['Imagem']['tmp_name'] as $key => $tmpName) {
+                    $imageName = basename($_FILES['Imagem']['name'][$key]);
+                    $targetFile = $uploadDir . $imageName;
 
-                    if (move_uploaded_file($tmpName, $targetFile)) { //verifica se o arquivo já foi movido para a pasta no diretório
-                        // 5. Insere o caminho da imagem na tabela Imagem
+                    if (move_uploaded_file($tmpName, $targetFile)) {
                         $sqlImage = "INSERT INTO Imagem (Caminho_imagem, ID_produto) VALUES (?, ?)";
                         $stmtImage = $conexao->prepare($sqlImage);
                         $stmtImage->bind_param("si", $targetFile, $produtoID);
 
                         if (!$stmtImage->execute()) {
                             echo "Erro ao inserir caminho da imagem: " . $stmtImage->error;
+                            exit(); // Encerra a execução se houver erro.
                         }
                     } else {
                         echo "Erro ao fazer upload da imagem: " . $_FILES['Imagem']['name'][$key];
+                        exit();
                     }
                 }
-            } else {
-                echo "Nenhuma imagem foi enviada.";
             }
+
+            // Redireciona para a página de sucesso, certificando-se de que não há saídas antes deste ponto
+            header("Location: sucessodoar.php");
+            exit();
         } else {
             echo "Erro ao inserir na tabela de categoria: " . $stmt2->error;
+            exit();
         }
     } else {
         echo "Erro ao inserir produto: " . $stmt1->error;
+        exit();
     }
 }
 ?>
