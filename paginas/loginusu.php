@@ -67,6 +67,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <span class="span" >Esqueceu a senha?</span>
         <p class="p"><span class="span"><a href="home.php?dir=paginas&file=cadastrousu" class="conta">Não tem conta?</a></span>
     </div>
+
+    <div>
+        <p class="p"><span class="span"><a href="home.php?dir=paginas&file=loginadm" class="conta">Login Administrador</a></span>
+    </div>
     
     <button class="button-entrar">Entrar</button>
 </form>
