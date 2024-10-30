@@ -16,10 +16,10 @@
         <nav>
             <ul>
                 <li><a href="home.php?dir=masculino&file=masculino_produtos" class="active">Masculino</a></li>
-                <li><a href="#">Feminino</a></li>
-                <li><a href="#">Infantil</a></li>
-                <li><a href="#">Calçados</a></li>
-                <li><a href="#">Sobre nós</a></li>
+                <li><a href="home.php?dir=feminino&file=feminino_produtos" class="active">Feminino</a></li>
+                <li><a href="home.php?dir=infantil&file=infantil_produtos" class="active">Infantil</a></li>
+                <li><a href="home.php?dir=calcados&file=calcados_produtos" class="active">Calçados</a></li>
+                <li><a href="home.php?dir=sobre_nos&file=descricao" class="active">Sobre_nos</a></li>
             </ul>
         </nav>
         <div class="login">
@@ -52,28 +52,28 @@
                 <img src="assets/feminino.jpg" alt="">    
                 </div>
                 <p class="texto-produto">Feminino</p>
-                <a class="btn-index" href=#>Acessar</a>
+                <a class="btn-index" href="home.php?dir=feminino&file=feminino_produtos">Acessar</a>
             </div>
             <div class="product">
                 <div class="img-produto ">
                 <img src="assets/infantil.jpg" alt="">
                 </div>
                 <p class="texto-produto">Infantil</p>
-                <a class="btn-index" href=#>Acessar</a>
+                <a class="btn-index" href="home.php?dir=infantil&file=infantil_produtos">Acessar</a>
             </div>
             <div class="product">
                 <div class="img-produto ">
                     <img src="assets/calçados.webp" alt="">
                 </div>
                 <p class="texto-produto">Calçados</p>
-                <a class="btn-index" href=#>Acessar</a>
+                <a class="btn-index" href="home.php?dir=calcados&file=calcados_produtos">Acessar</a>
             </div>
             <div class="product">
                 <div class="img-produto ">
                     <img src="assets/Sobre nós.png" alt="">
                 </div>
                 <p class="texto-produto">Sobre nós</p>
-                <a class="btn-index" href=#>Acessar</a>
+                <a class="btn-index" href="home.php?dir=sobre_nos&file=descricao">Acessar</a>
             </div>
         </section>
     </main>
@@ -102,7 +102,7 @@
         <br>
         <div class="footer-bottom">
             
-            © Todos osa direitos reservados | coração solidário | 2024</>
+            © Todos os direitos reservados | coração solidário | 2024</>
         </div>
     </footer>
 </body>

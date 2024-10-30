@@ -15,11 +15,11 @@
     </div>
         <nav>
             <ul>
-                <li><a href="home.php?dir=masculino&file=masculino_produtos" >Masculino</a></li>
-                <li><a href="#">Feminino</a></li>
-                <li><a href="#">Infantil</a></li>
-                <li><a href="#">Calçados</a></li>
-                <li><a href="#">Sobre nós</a></li>
+                <li><a href="home.php?dir=masculino&file=masculino_produtos">Masculino</a></li>
+                <li><a href="home.php?dir=feminino&file=feminino_produtos" class="active">Feminino</a></li>
+                <li><a href="home.php?dir=infantil&file=infantil_produtos" class="active">Infantil</a></li>
+                <li><a href="home.php?dir=calcados&file=calcados_produtos" class="active">Calçados</a></li>
+                <li><a href="home.php?dir=sobre_nos&file=descricao" class="active">Sobre_nos</a></li>
             </ul>
         </nav>
         <div class="login">
@@ -29,15 +29,14 @@
     <div class="cart-icon">
         <a href="home.php?dir=paginas&file=carrinho"><img src="assets/shopping-cart.png" alt="Carrinho de compras"></a>
     </div>
-
-    
+ 
     <main class="principal">
     <div class="conteudo">
         <?php
         // Verifica se 'dir' e 'file' estão definidos e não estão vazios
         if (isset($_GET['dir']) && isset($_GET['file']) && !empty($_GET['dir']) && !empty($_GET['file'])) {
             $dir = preg_replace('/[^a-zA-Z0-9-_]/', '', $_GET['dir']); // Sanitiza o nome do diretório
-            $file = preg_replace('/[^a-zA-Z0-9-_]/', '', $_GET['file']); // Sanitiza o nome do arquivo
+            $file = preg_replace('/[^a-zA-Z0-9-_]/', '', $_GET['file']); // Sanitiza o nome do arquivo 
 
             $path = __DIR__ . "/{$dir}/{$file}.php";
 
@@ -80,7 +79,7 @@
         <br>
         <div class="footer-bottom">
             
-            © Todos osa direitos reservados | coração solidário | 2024</>
+            © Todos os direitos reservados | coração solidário | 2024</>
         </div>
     </footer>
 </body>
