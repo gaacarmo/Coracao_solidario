@@ -5,6 +5,10 @@
     <title>Coração Solidário</title>
     <link rel="stylesheet" href="./CSS/style.css">
 </head>
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper></div>
+</div>
 <body>
     <header>
         <div class="logo">
@@ -107,3 +111,7 @@
     </footer>
 </body>
 </html>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
