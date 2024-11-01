@@ -1,7 +1,7 @@
 <h1>Fazer doação</h1>
 <link rel="stylesheet" href="./form_doar.css">
 
-<form class="form" action="home.php?dir=paginas&file=sucessodoar" method="POST" enctype="multipart/form-data">
+<form class="form"  method="POST" enctype="multipart/form-data">
     <div>
         <label class="espaçamento" for="NomeProduto">Qual o nome do produto?</label>
         <input type="text" name="NomeProduto" id="NomeProduto" placeholder="Ex: Camisa" class="input" required>
