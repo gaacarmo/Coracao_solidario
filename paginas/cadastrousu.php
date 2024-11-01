@@ -66,7 +66,7 @@ if(count($_POST) > 0){
         $erros['CPF'] = "CPF inválido";
     }
 
-    if(isset($dados['Telefone']) && !validaTelefone($dados['Telefone'])){
+    if(isset($dados['Telefone']) && !validaTelefone($dados['Telefone'])){   
         $erros['Telefone'] = "Telefone inválido";
     }
 

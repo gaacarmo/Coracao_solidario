@@ -8,18 +8,18 @@
 <body>
     <header>
         <div class="logo">
-            <a href="index.php "><img class="logo-1" src="assets/logo coracao.png" alt="Coração Solidário">
+            <a href="./index.php "><img class="logo-1" src="assets/logo coracao.png" alt="Coração Solidário">
             </a>
             
             <a>Coração Solidário</a>
         </div>
         <nav>
             <ul>
-                <li><a href="home.php?dir=masculino&file=masculino_produtos" class="active">Masculino</a></li>
-                <li><a href="home.php?dir=feminino&file=feminino_produtos" class="active">Feminino</a></li>
-                <li><a href="home.php?dir=infantil&file=infantil_produtos" class="active">Infantil</a></li>
-                <li><a href="home.php?dir=calcados&file=calcados_produtos" class="active">Calçados</a></li>
-                <li><a href="home.php?dir=sobre_nos&file=descricao" class="active">Sobre_nos</a></li>
+                <li><a href="home.php?dir=paginas&file=masculino_produtos" class="active">Masculino</a></li>
+                <li><a href="home.php?dir=paginas&file=feminino_produtos" class="active">Feminino</a></li>
+                <li><a href="home.php?dir=paginas&file=infantil_produtos" class="active">Infantil</a></li>
+                <li><a href="home.php?dir=paginas&file=calcados_produtos" class="active">Calçados</a></li>
+                <li><a href="home.php?dir=paginas&file=sobre_nos" class="active">Sobre Nós</a></li>
             </ul>
         </nav>
         <div class="login">
@@ -45,35 +45,35 @@
                 <img src="assets/masculino.webp" alt="">
                 </div>
                 <p class="texto-produto">Masculino</p>
-                <a class="btn-index" href="home.php?dir=masculino&file=masculino_produtos">Acessar</a>
+                <a class="btn-index" href="home.php?dir=paginas&file=masculino_produtos">Acessar</a>
             </div>
             <div class="product">
                 <div class="img-produto ">
                 <img src="assets/feminino.jpg" alt="">    
                 </div>
                 <p class="texto-produto">Feminino</p>
-                <a class="btn-index" href="home.php?dir=feminino&file=feminino_produtos">Acessar</a>
+                <a class="btn-index" href="home.php?dir=paginas&file=feminino_produtos">Acessar</a>
             </div>
             <div class="product">
                 <div class="img-produto ">
                 <img src="assets/infantil.jpg" alt="">
                 </div>
                 <p class="texto-produto">Infantil</p>
-                <a class="btn-index" href="home.php?dir=infantil&file=infantil_produtos">Acessar</a>
+                <a class="btn-index" href="home.php?dir=paginas&file=infantil_produtos">Acessar</a>
             </div>
             <div class="product">
                 <div class="img-produto ">
                     <img src="assets/calçados.webp" alt="">
                 </div>
                 <p class="texto-produto">Calçados</p>
-                <a class="btn-index" href="home.php?dir=calcados&file=calcados_produtos">Acessar</a>
+                <a class="btn-index" href="home.php?dir=paginas&file=calcados_produtos">Acessar</a>
             </div>
             <div class="product">
                 <div class="img-produto ">
                     <img src="assets/Sobre nós.png" alt="">
                 </div>
                 <p class="texto-produto">Sobre nós</p>
-                <a class="btn-index" href="home.php?dir=sobre_nos&file=descricao">Acessar</a>
+                <a class="btn-index" href="home.php?dir=paginas&file=sobre_nos">Acessar</a>
             </div>
         </section>
     </main>

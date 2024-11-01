@@ -1,0 +1,122 @@
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #ffffff;
+    padding: 40px;
+    width: 800px;
+    max-width: 450px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: auto;
+}
+
+/* Estilo dos inputs */
+.input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    background-color: #f9fafb;
+}
+
+.input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Labels */
+label {
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+
+
+
+.form a:hover {
+    color: #0056b3;
+}
+
+/* Botão */
+.form button {
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    margin-left: 3px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.form button:hover {
+    background-color: #333;
+}
+
+
+
+/* Caixa de entrada e seus efeitos */
+.inputForm {
+    border: 1.5px solid #d3d3d3;
+    border-radius: 8px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.input {
+    margin: 5px;
+    border-radius: 8px;
+    border: 1.5px solid #ecedec;
+    width: 100%;
+    height: 100%;
+    padding-left: 10px;
+    font-size: 16px;
+    color: #333333;
+}
+
+/* Estilo do alerta */
+.alerta {
+    color: #FF5252;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Estilo para links e ícones de voltar */
+.voltar {
+    height: 30px;
+    position: absolute;
+    
+    left: 30px;
+    cursor: pointer;
+}
+
+
+
+.btn:hover::before {
+    transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+    .form {
+        width: 100%;
+        padding: 20px;
+    }
+    
+    .voltar {
+        left: 10px;
+    }
+}

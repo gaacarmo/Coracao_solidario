@@ -1,6 +1,10 @@
-<h1>Fazer doação</h1>
-<link rel="stylesheet" href="./form_doar.css">
-
+<?php
+ob_start(); // Inicia o buffer de saída
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $dados = $_POST;
+    require_once "conexao.php";
+    $conexao = novaConexao();
+?>
 <form class="form"  method="POST" enctype="multipart/form-data">
     <div>
         <label class="espaçamento" for="NomeProduto">Qual o nome do produto?</label>
@@ -80,81 +84,3 @@
         <button type="button" onclick="window.location.href='index.php'">Cancelar</button> <!-- Retorna para a página principal --->
     </div>
 </form>
-
-<?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $dados = $_POST;
-    require_once "conexao.php";
-    $conexao = novaConexao();
-
-    $sql1 = "INSERT INTO Produto (Nome, Categoria, Publico_alvo, Descricao, Condicao) VALUES (?, ?, ?, ?, ?)";
-    $stmt1 = $conexao->prepare($sql1);
-    $params1 = [
-        $dados['NomeProduto'],
-        $dados['Categoria'],
-        $dados['Publico_alvo'],
-        $dados['Descricao'],
-        $dados['Condicao'],
-    ];
-    $stmt1->bind_param("sssss", ...$params1);
-
-    if ($stmt1->execute()) {
-        $produtoID = $conexao->insert_id;
-
-        if ($dados['Categoria'] == 'Calçado') {
-            $sql2 = "INSERT INTO Calcado (Tamanho_calcado, Cor_calcado, ID_produto) VALUES (?, ?, ?)";
-            $stmt2 = $conexao->prepare($sql2);
-            $params2 = [
-                $dados['Tamanho'],
-                $dados['Cor'],
-                $produtoID
-            ];
-            $stmt2->bind_param("ssi", ...$params2);
-
-        } else {
-            $sql2 = "INSERT INTO Roupa (Tamanho_roupa, Cor_roupa, ID_produto) VALUES (?, ?, ?)";
-            $stmt2 = $conexao->prepare($sql2);
-            $params2 = [
-                $dados['Tamanho'],
-                $dados['Cor'],
-                $produtoID
-            ];
-            $stmt2->bind_param("ssi", ...$params2);
-        }
-
-        if ($stmt2->execute()) {
-            $uploadDir = 'uploads/';
-            if (isset($_FILES['Imagem']) && is_array($_FILES['Imagem']['tmp_name'])) {
-                foreach ($_FILES['Imagem']['tmp_name'] as $key => $tmpName) {
-                    $imageName = basename($_FILES['Imagem']['name'][$key]);
-                    $targetFile = $uploadDir . $imageName;
-
-                    if (move_uploaded_file($tmpName, $targetFile)) {
-                        $sqlImage = "INSERT INTO Imagem (Caminho_imagem, ID_produto) VALUES (?, ?)";
-                        $stmtImage = $conexao->prepare($sqlImage);
-                        $stmtImage->bind_param("si", $targetFile, $produtoID);
-
-                        if (!$stmtImage->execute()) {
-                            echo "Erro ao inserir caminho da imagem: " . $stmtImage->error;
-                            exit(); // Encerra a execução se houver erro.
-                        }
-                    } else {
-                        echo "Erro ao fazer upload da imagem: " . $_FILES['Imagem']['name'][$key];
-                        exit();
-                    }
-                }
-            }
-
-            // Redireciona para a página de sucesso, certificando-se de que não há saídas antes deste ponto
-            header("Location: sucessodoar.php");
-            exit();
-        } else {
-            echo "Erro ao inserir na tabela de categoria: " . $stmt2->error;
-            exit();
-        }
-    } else {
-        echo "Erro ao inserir produto: " . $stmt1->error;
-        exit();
-    }
-}
-?>

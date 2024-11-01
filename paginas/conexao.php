@@ -1,7 +1,7 @@
 <?php
 
 function novaConexao($banco = 'brecho'){
-    $sever = '127.0.0.1:3306';
+    $sever = '127.0.0.1:3307';
     $username = 'root';
     $password = '';
 
