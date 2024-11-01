@@ -155,10 +155,10 @@ main {
 }
 
 .img-produto img {
-    width: 100%; /* A imagem ocupará 100% do contêiner */
-    object-fit: cover; /* Mantém a proporção sem distorção */
+    width: 80%; 
+    object-fit: cover; 
     border-radius: 8px;
-    max-width: 350px; /* Largura máxima */
+    max-width: 350px;
     height: 200px;
 }
 

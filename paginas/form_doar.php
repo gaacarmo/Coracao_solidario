@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="./CSS/form_doar.css">
 <?php
 ob_start(); // Inicia o buffer de saída
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <!-- Formulário HTML -->
-<link rel="stylesheet" href="./login.css">
+<link rel="stylesheet" href="./CSS/login.css">
 
 <h1>Login</h1>
 <form class="form" method="post">

@@ -125,7 +125,7 @@ if(count($_POST) > 0){
 ?>
 
 
-<link rel="stylesheet" href="./cadastro.css">
+<link rel="stylesheet" href="./CSS/cadastro.css">
 <h1>Cadastro</h1>
 <a href="home.php?dir=paginas&file=loginusu"><img class="voltar" src="assets/de-volta.png" alt=""></a>
 

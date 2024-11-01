@@ -15,10 +15,10 @@
     </div>
         <nav>
             <ul>
-                <li><a href="home.php?dir=paginas&file=masculino_produtos">Masculino</a></li>
-                <li><a href="home.php?dir=paginas&file=feminino_produtos" class="active">Feminino</a></li>
-                <li><a href="home.php?dir=paginas&file=infantil_produtos" class="active">Infantil</a></li>
-                <li><a href="home.php?dir=paginas&file=calcados_produtos" class="active">Calçados</a></li>
+                <li><a href="home.php?dir=masculino&file=masculino_produtos">Masculino</a></li>
+                <li><a href="home.php?dir=feminino&file=feminino_produtos" class="active">Feminino</a></li>
+                <li><a href="home.php?dir=infantil&file=infantil_produtos" class="active">Infantil</a></li>
+                <li><a href="home.php?dir=calcados&file=calcados_produtos" class="active">Calçados</a></li>
                 <li><a href="home.php?dir=paginas&file=sobre_nos" class="active">Sobre Nós</a></li>
             </ul>
         </nav>
