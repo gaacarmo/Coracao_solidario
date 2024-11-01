@@ -4,6 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $dados = $_POST;
     require_once "conexao.php";
     $conexao = novaConexao();
+}
 ?>
 <form class="form"  method="POST" enctype="multipart/form-data">
     <div>
