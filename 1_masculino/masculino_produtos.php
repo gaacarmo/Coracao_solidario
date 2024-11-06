@@ -7,7 +7,7 @@
                 </div>
                 <p class="texto-produto">Camisa do Vasco da Gama</p>
                 <p class='sub-titulo'>Tamanho: M </p>
-                <a class="btn-index" href='#'>Saiba mais</a>
+                <a class="btn-index" href='home.php?dir=1_masculino&file=pg_produtos?id=1'>Saiba mais</a>
             </div>
             <div class="product">
                 <div class="img-produto ">
@@ -15,7 +15,7 @@
                 </div>
                 <p class="texto-produto">Camisa do Flamengo</p>
                 <p class='sub-titulo'>Tamanho: P </p>
-                <a class="btn-index" href='#'>Saiba mais</a>
+                <a class="btn-index" href='home.php?dir=1_masculino&file=pg_produtos?id=2'>Saiba mais</a>
             </div>
             <div class="product">
                 <div class="img-produto ">
@@ -23,7 +23,7 @@
                 </div>
                 <p class="texto-produto">Camisa algodão cinza</p>
                 <p class='sub-titulo'>Tamanho: </p>
-                <a class="btn-index" href='#'>Saiba mais</a>
+                <a class="btn-index" href='home.php?dir=1_masculino&file=pg_produtos?id=3'>Saiba mais</a>
             </div>
             <div class="product">
                 <div class="img-produto ">
@@ -31,7 +31,7 @@
                 </div>
                 <p class="texto-produto">Camisa Authenticity</p>
                 <p class='sub-titulo'>Tamanho: P </p>
-                <a class="btn-index" href='#'>Saiba mais</a>
+                <a class="btn-index" href='home.php?dir=1_masculino&file=pg_produtos?id=4'>Saiba mais</a>
             </div>
             <div class="product">
                 <div class="img-produto ">
@@ -39,7 +39,7 @@
                 </div>
                 <p class="texto-produto">Camisa Zara Men</p>
                 <p class='sub-titulo'>Tamanho: G </p>
-                <a class="btn-index" href='#'>Saiba mais</a>
+                <a class="btn-index" href='home.php?dir=1_masculino&file=pg_produtos?id=5'>Saiba mais</a>
             </div>
             <div class="product">
                 <div class="img-produto ">
@@ -47,7 +47,7 @@
                 </div>
                 <p class="texto-produto">Camisa Penalty Vermelha</p>
                 <p class='sub-titulo'>Tamanho: M </p>
-                <a class="btn-index" href='#'>Saiba mais</a>
+                <a class="btn-index" href='home.php?dir=1_masculino&file=pg_produtos?id=6'>Saiba mais</a>
             </div>
             
         </section>
