@@ -1,3 +1,6 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marmelad&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -15,7 +18,7 @@
             <a href="./index.php "><img class="logo-1" src="assets/logo coracao.png" alt="Coração Solidário">
             </a>
             
-            <a>Coração Solidário</a>
+            <a class="texto-titulo">Coração Solidário</a>
         </div>
         <nav>
             <ul>
@@ -115,3 +118,9 @@
 <script>
     new window.VLibras.Widget('https://vlibras.gov.br/app');
 </script>
+<style>
+    .texto-titulo{
+        color: white;
+        font-weight: bold;
+    }
+</style>

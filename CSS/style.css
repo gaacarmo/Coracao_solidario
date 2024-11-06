@@ -3,9 +3,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
-  }
-  
+    font-family:Georgia, 'Times New Roman', Times, serif
+}
+.texto-titulo{
+    color: white;
+    font-weight: bold;
+}
   
   header {
       display: flex;

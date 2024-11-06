@@ -1,3 +1,4 @@
+
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -15,7 +16,7 @@
         <a href="./index.php">
             <img class="logo-1" src="assets/logo coracao.png" alt="Coração Solidário">
         </a>
-        <span>Coração Solidário</span>
+        <p class="texto-titulo">Coração Solidário</p>
     </div>
         <nav>
             <ul>
@@ -92,3 +93,9 @@
 <script>
     new window.VLibras.Widget('https://vlibras.gov.br/app');
 </script>
+<style>
+    .texto-titulo{
+        color: white;
+        font-weight: bold;
+    }
+</style>
