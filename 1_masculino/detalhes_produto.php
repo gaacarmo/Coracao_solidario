@@ -35,10 +35,10 @@ if (isset($_GET['codigo'])) {
 ?>
 
 <h3 class="nome-produto"><?php echo htmlspecialchars($dados['Nome']); ?></h3>
-<p class="tamanho-produto">Tamanho: <?php echo htmlspecialchars($dados['Publico_alvo']); ?></p>
-<p class="localizacao-produto">Localização: <?php echo htmlspecialchars($dados['Condicao']); ?></p>
-<p class="condicao-produto">Condição: <?php echo htmlspecialchars($dados['Condicao']); ?></p>
-<img src="uploads/<?php echo htmlspecialchars($dados['Caminho_imagem']); ?>" alt="Imagem do produto">
+<p class="tamanho-produto">Publico alvo: <?php echo htmlspecialchars($dados['Publico_alvo']); ?></p>
+<p class="localizacao-produto">Condicãp: <?php echo htmlspecialchars($dados['Condicao']); ?></p>
+<p class="condicao-produto">Categoria: <?php echo htmlspecialchars($dados['Categoria']); ?></p>
+<img src="./<?php echo htmlspecialchars($dados['Caminho_imagem']); ?>" alt="Imagem do produto">
 
 <style>
 
