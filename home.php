@@ -28,13 +28,20 @@
             </ul>
         </nav>
         <div class="login">
-            <button><a href="home.php?dir=paginas&file=loginusu">Entrar</a></button>
+        <?php
+            session_start();
+            // Verifica se o usuário está logado
+            if (!(isset($_SESSION['is_logged_in'])) || $_SESSION['is_logged_in'] !== true) {
+                echo '<button><a href="{home.php?dir=paginas&file=loginusu}">Entrar</a></button>';
+                
+            }
+            ?> 
         </div>
     </header>
     <div class="cart-icon">
         <a href="home.php?dir=paginas&file=carrinho"><img src="assets/shopping-cart.png" alt="Carrinho de compras"></a>
     </div>
- 
+
     <main class="principal">
     <div class="conteudo">
         <?php

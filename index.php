@@ -1,12 +1,12 @@
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Marmelad&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coração Solidário</title>
     <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marmelad&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 </head>
 <div vw class="enabled">
     <div vw-access-button class="active"></div>
@@ -30,6 +30,14 @@
             </ul>
         </nav>
         <div class="login">
+            <?php
+                session_start();
+                // Verifica se o usuário está logado
+                if (!(isset($_SESSION['is_logged_in'])) || $_SESSION['is_logged_in'] !== true) {
+                    echo '<button><a href="{home.php?dir=paginas&file=loginusu}">Entrar</a></button>';
+                    
+                }
+            ?> 
             <button><a href="home.php?dir=paginas&file=loginusu">Entrar</a></button>
         </div>
     </header>
@@ -37,7 +45,15 @@
         <a href="home.php?dir=paginas&file=carrinho"><img src="assets/shopping-cart.png" alt="Carrinho de compras"></a>
     </div>
 
-    <h1>Coração Solidário</h1>
+    
+    <?php
+    if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true) {
+        echo "<h1>Coração Solidário - Bem-vindo,  {$_SESSION['username']} !</h1>";
+        // Aqui você pode exibir conteúdo restrito ou dados do usuário
+    } else{
+        echo "<h1>Coração Solidário</h1>";
+    } ?>
+    
     <main class="principal">
         <section class="products">
             <div class="product">

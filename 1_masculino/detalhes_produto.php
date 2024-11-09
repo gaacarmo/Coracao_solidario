@@ -1,4 +1,5 @@
 <h1>Masculino</h1>
+<link rel="stylesheet" href="./CSS/detalhes_produto.css">
 
 <?php
 require_once 'conexao.php';
@@ -33,21 +34,29 @@ if (isset($_GET['codigo'])) {
     exit;
 }
 ?>
+<main>
+    <div class="container_principal">
+        <div>
+            <img src="./<?php echo htmlspecialchars($dados['Caminho_imagem']); ?>" class="imagem_principal" alt="Imagem do produto">
+        </div>
 
-<h3 class="nome-produto"><?php echo htmlspecialchars($dados['Nome']); ?></h3>
-<p class="tamanho-produto">Publico alvo: <?php echo htmlspecialchars($dados['Publico_alvo']); ?></p>
-<p class="localizacao-produto">Condicãp: <?php echo htmlspecialchars($dados['Condicao']); ?></p>
-<p class="condicao-produto">Categoria: <?php echo htmlspecialchars($dados['Categoria']); ?></p>
-<img src="./<?php echo htmlspecialchars($dados['Caminho_imagem']); ?>" alt="Imagem do produto">
+        <div>
+            <h1 class="nome-produto"><?php echo htmlspecialchars($dados['Nome']); ?></h1>
+            <p class="tamanho-produto">Público alvo: <?php echo htmlspecialchars($dados['Publico_alvo']); ?></p>
+            <p class="localizacao-produto">Condição do produto: <?php echo htmlspecialchars($dados['Condicao']); ?></p>
+            <p class="condicao-produto">Categoria: <?php echo htmlspecialchars($dados['Categoria']); ?></p>
+            <p>Tamanho: </p>
+            <p>Localização do produto: ./ ./ Curitiba</p>
+            <p>Telefone do doador: </p>
+            <p>Descrição do produto: </p>
+        </div>
+    </div>
 
-<style>
+    
+</main>
 
-    .nome-produto {
-        font-size: 1.5rem;
-        font-weight: bold;
-    }
-    .tamanho-produto, .localizacao-produto, .condicao-produto {
-        font-size: 1rem;
-        margin: 5px 0;
-    }
-</style>
+<div class="container_botao">
+    <button type="button">
+        <a href="index.php">Adicionar ao carrinho</a>
+    </button>
+</div>

@@ -17,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (count($erros) == 0) {
         require_once("conexao.php");
         $conexao = novaConexao();
+        session_start();
 
         $sql = "SELECT * FROM Cliente WHERE Usuario_cliente=? AND Senha_cliente=?";
         $stmt = $conexao->prepare($sql);
@@ -31,9 +32,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($stmt->execute()) {
             $result = $stmt->get_result();
             if ($result->num_rows > 0) {
+                $_SESSION['username'] = $dados['Usuario_cliente'];
+                $_SESSION['is_logged_in'] = true;
+                
+                $sql2 = "SELECT ID FROM Cliente WHERE Usuario_cliente = ?";
+                $stmt2 = $conexao->prepare($sql2);
+                $params2 = [
+                    $dados['Usuario_cliente'],
+                ];
+                $stmt2 -> bind_param("s", ...$params2);
+                if ($stmt2->execute()){
+                    $result2 = $stmt2->get_Result();
+                    if ($result2->num_rows > 0) {
+                        $row = $result2->fetch_assoc();
+                        $_SESSION['id_cliente'] = $row['ID']; // Armazena o ID na sessão
+                    }
+                }
                 // Login bem-sucedido
                 // Aqui você pode redirecionar o usuário ou iniciar uma sessão
                 unset($dados);
+                header("Location: index.php");
+                exit;
             } else {
                 // Usuário ou senha incorretos
                 $erros['login'] = "Nome de usuário ou senha incorretos.";

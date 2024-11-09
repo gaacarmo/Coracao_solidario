@@ -1,79 +1,117 @@
 <link rel="stylesheet" href="./CSS/form_doar.css">
 <?php
-ob_start(); // Inicia o buffer de saída
+
+// Verifica se o usuário está logado
+if (!(isset($_SESSION['is_logged_in'])) || $_SESSION['is_logged_in'] !== true) {
+    echo "<script>
+    alert('Para acessar esta página, é necessário fazer login.');
+    window.location.href = 'home.php?dir=paginas&&file=loginusu';
+    </script>";
+    exit;
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-   $dados = $_POST;
-   require_once "conexao.php";
-   $conexao = novaConexao();
+    $dados = $_POST;
+    require_once "conexao.php";
+    $conexao = novaConexao();
 
-   $sql1 = "INSERT INTO Produto (Nome, Categoria, Publico_alvo, Descricao, Condicao) VALUES (?, ?, ?, ?, ?)";
-   $stmt1 = $conexao->prepare($sql1);
-   $params1 = [
-       $dados['NomeProduto'],
-       $dados['Categoria'],
-       $dados['Publico_alvo'],
-       $dados['Descricao'],
-       $dados['Condicao'],
-   ];
-   $stmt1->bind_param("sssss", ...$params1);
+    $sql1 = "INSERT INTO Produto (Nome, Categoria, Publico_alvo, Descricao, Condicao) VALUES (?, ?, ?, ?, ?)";
+    $stmt1 = $conexao->prepare($sql1);
+    $params1 = [
+        $dados['NomeProduto'],
+        $dados['Categoria'],
+        $dados['Publico_alvo'],
+        $dados['Descricao'],
+        $dados['Condicao'],
+        
+    ];
+    $stmt1->bind_param("sssss", ...$params1);
+    
 
-   if ($stmt1->execute()) {
-       $produtoID = $conexao->insert_id;
+    if ($stmt1->execute()) {
+        $produtoID = $conexao->insert_id;
+        $id_cliente = $_SESSION['id_cliente'];
+        $sql2 = "UPDATE Cliente SET Bairro = ?, Logradouro = ?, Numero = ? WHERE id= ?";
+        $stmt2 = $conexao->prepare($sql2);
+        $params2 = [
+            $dados['Bairro'],
+            $dados['Logradouro'],
+            $dados['Numero'],
+            $id_cliente,
+        ];
+        $stmt2->bind_param("sssi", ...$params2);
+        if ($stmt2->execute()) {
+            
+            // Inserindo na tabela Cadastro_produto
+            $sql3 = "INSERT INTO Cadastro_produto (ID_cliente, ID_produto) VALUES (?,?)";
+            $stmt3 = $conexao->prepare($sql3);
+            $params3 = [$id_cliente, $produtoID];
+            $stmt3->bind_param("ii", ...$params3);
 
-       if ($dados['Categoria'] == 'Calçado') {
-           $sql2 = "INSERT INTO Calcado (Tamanho_calcado, Cor_calcado, ID_produto) VALUES (?, ?, ?)";
-           $stmt2 = $conexao->prepare($sql2);
-           $params2 = [
-               $dados['Tamanho'],
-               $dados['Cor'],
-               $produtoID
-           ];
-           $stmt2->bind_param("ssi", ...$params2);
-       } else {
-           $sql2 = "INSERT INTO Roupa (Tamanho_roupa, Cor_roupa, ID_produto) VALUES (?, ?, ?)";
-           $stmt2 = $conexao->prepare($sql2);
-           $params2 = [
-               $dados['Tamanho'],
-               $dados['Cor'],
-               $produtoID
-           ];
-           $stmt2->bind_param("ssi", ...$params2);
-       }
+            if ($stmt3->execute()) {
+                
+                // Inserindo dados em Calcado ou Roupa com base na Categoria
+                if ($dados['Categoria'] == 'Calçado') {
+                    $sql4 = "INSERT INTO Calcado (Tamanho_calcado, Cor_calcado, ID_produto) VALUES (?, ?, ?)";
+                    $stmt4 = $conexao->prepare($sql4);
+                    $params4 = [
+                        $dados['Tamanho'],
+                        $dados['Cor'],
+                        $produtoID
+                    ];
+                    $stmt4->bind_param("ssi", ...$params4);
+                } else {
+                    $sql4 = "INSERT INTO Roupa (Tamanho_roupa, Cor_roupa, ID_produto) VALUES (?, ?, ?)";
+                    $stmt4 = $conexao->prepare($sql4);
+                    $params4 = [
+                        $dados['Tamanho'],
+                        $dados['Cor'],
+                        $produtoID
+                    ];
+                    $stmt4->bind_param("ssi", ...$params4);
+                }
 
-       if ($stmt2->execute()) {
-           $uploadDir = 'uploads/';
-           if (isset($_FILES['Imagem']) && is_array($_FILES['Imagem']['tmp_name'])) {
-               foreach ($_FILES['Imagem']['tmp_name'] as $key => $tmpName) {
-                   $imageName = basename($_FILES['Imagem']['name'][$key]);
-                   $targetFile = $uploadDir . $imageName;
+                if ($stmt4->execute()) {
+                    $uploadDir = 'uploads/';
+                    if (isset($_FILES['Imagem']) && is_array($_FILES['Imagem']['tmp_name'])) {
+                        foreach ($_FILES['Imagem']['tmp_name'] as $key => $tmpName) {
+                            $imageName = basename($_FILES['Imagem']['name'][$key]);
+                            $targetFile = $uploadDir . $imageName;
 
-                   if (move_uploaded_file($tmpName, $targetFile)) {
-                       $sqlImage = "INSERT INTO Imagem (Caminho_imagem, ID_produto) VALUES (?, ?)";
-                       $stmtImage = $conexao->prepare($sqlImage);
-                       $stmtImage->bind_param("si", $targetFile, $produtoID);
+                            if (move_uploaded_file($tmpName, $targetFile)) {
+                                $sqlImage = "INSERT INTO Imagem (Caminho_imagem, ID_produto) VALUES (?, ?)";
+                                $stmtImage = $conexao->prepare($sqlImage);
+                                $stmtImage->bind_param("si", $targetFile, $produtoID);
 
-                       if (!$stmtImage->execute()) {
-                           echo "Erro ao inserir caminho da imagem: " . $stmtImage->error;
-                           exit();
-                       }
-                   } else {
-                       echo "Erro ao fazer upload da imagem: " . $_FILES['Imagem']['name'][$key];
-                       exit();
-                   }
-               }
-           }
+                                if (!$stmtImage->execute()) {
+                                    echo "Erro ao inserir caminho da imagem: " . $stmtImage->error;
+                                    exit();
+                                }
+                            } else {
+                                echo "Erro ao fazer upload da imagem: " . $_FILES['Imagem']['name'][$key];
+                                exit();
+                            }
+                        }
+                    }
 
-           
-       } else {
-           echo "Erro ao inserir na tabela de categoria: " . $stmt2->error;
-           exit();
-       }
-   } else {
-       echo "Erro ao inserir produto: " . $stmt1->error;
-       exit();
-   }
+                }else{
+                    echo "Erro ao inserir na tabela Imagem: " . $stmt4->error;
+                    exit();
+                }    
+            } else {
+                echo "Erro ao inserir na tabela Cadastro produto: " . $stmt3->error;
+                exit();
+            }
+        } else{
+            echo "Erro ao inserir na tabela cliente: " . $stmt2->error;
+            exit();
+        }
+    } else {
+        echo "Erro ao inserir produto: " . $stmt1->error;
+        exit();
+    }
 }
+
 ?>
 
 <form class="form"  method="POST" enctype="multipart/form-data">
@@ -137,6 +175,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div>
         <label class="espaçamento" for="CorProduto">Qual a cor do produto?</label>
         <input type="text" name="Cor" id="CorProduto" placeholder="Ex: Azul" class="input" required> <!-- Campo obrigatório --->
+    </div>
+    
+    <div class="endereco">
+        <label for="Bairro">Bairro</label>
+        <input type="text" name="Bairro" id="Bairro" placeholder="Ex: Novo Mundo" class="input">
+
+        <label for="Rua">Rua</label>
+        <input type="text" name="Logradouro" id="Logradouro" placeholder="Ex: Rua dos açoures" class="input">
+
+        <label for="Numero">Número</label>
+        <input type="text" name="Numero" id="Numero" placeholder="Ex: 205" class="input">
     </div>
 
     <div>

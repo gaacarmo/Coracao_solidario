@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <p class="texto-produto">Camisa do Vasco da Gama</p>
             <p class="sub-titulo">Tamanho: M</p>
-            <a  class="btn-index" href='home.php?dir=1_masculino&file=detalhes_produto&codigo=6' >Saiba mais</a>
+            <a  class="btn-index" href='home.php?dir=1_masculino&file=detalhes_produto&codigo=22' >Saiba mais</a>
         </div>
 
         <div class="product">
