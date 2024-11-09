@@ -34,7 +34,7 @@
                 session_start();
                 // Verifica se o usuário está logado
                 if (!(isset($_SESSION['is_logged_in'])) || $_SESSION['is_logged_in'] !== true) {
-                    echo '<button><a href="{home.php?dir=paginas&file=loginusu}">Entrar</a></button>';
+                    echo '<button><a href="home.php?dir=paginas&file=loginusu">Entrar</a></button>';
                     
                 }
             ?> 
