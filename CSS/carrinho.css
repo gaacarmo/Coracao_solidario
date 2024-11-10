@@ -1,0 +1,71 @@
+.container_produto {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Exibe exatamente 3 itens por linha */
+    gap: 30px; /* Espaçamento entre os produtos */
+    justify-items: center; /* Centraliza os produtos dentro da coluna */
+    padding: 20px;
+}
+
+.produto {
+    width: 100%;
+    max-width: 250px; /* Largura máxima para cada produto */
+    background-color: #ffffff;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.produto:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.produto img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.produto p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.produto a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.produto a:hover {
+    background-color: #0056b3;
+}
+
+.form_finalizar {
+    text-align: center;
+}
+
+.form_finalizar button{
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    font-weight: 800;
+}
+
+.form_finalizar button:hover {
+    background-color: white;
+    color: black;
+}

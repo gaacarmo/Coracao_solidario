@@ -20,20 +20,17 @@
     height: 350px;
 }
 
-.container_botao {
-    display: flex;
-    justify-content: center;
-}
-
-.container_botao button {
+.container_botao form button {
     padding: 10px;
-}
-
-.container_botao button a {
+    background-color: blue;
+    color: white; /* Define a cor do texto para garantir visibilidade */
+    border: none;
+    cursor: pointer;
     text-decoration: none;
-    color: black;
+    font-size: 16px; /* Ajuste opcional para melhor legibilidade */
 }
 
-.container_botao button:hover {
-    border: 2px solid blue;
+.container_botao form button:hover {
+    color: blue; /* Altera a cor do texto no hover para combinar com a borda */
+    background-color: lightblue; /* Altera a cor do fundo no hover */
 }
