@@ -47,7 +47,7 @@ CREATE TABLE Produto (
     Publico_alvo VARCHAR(9) NOT NULL,
     Data_postagem DATETIME DEFAULT CURRENT_TIMESTAMP,
     Condicao VARCHAR(9) NOT NULL,
-    Descricao VARCHAR(200),
+    Descricao VARCHAR(300),
     Usuario_admin VARCHAR(20),
     FOREIGN KEY (Usuario_admin) REFERENCES Administrador_site(Usuario_admin)
 );
@@ -86,7 +86,15 @@ CREATE TABLE Calcado (
 
 CREATE TABLE Imagem (
 	ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    Caminho_imagem VARCHAR(100) NOT NULL,
+    Caminho_imagem VARCHAR(255) NOT NULL,
     ID_produto INT,
     FOREIGN KEY(ID_produto) REFERENCES Produto(ID)
 );
+
+CREATE TABLE Feedback (
+    ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    Nota INT NOT NULL,
+    Comentario VARCHAR(500) NOT NULL,
+    ID_cliente INT,
+    FOREIGN KEY (ID_cliente) REFERENCES Cliente(ID)
+)

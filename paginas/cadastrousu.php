@@ -96,15 +96,17 @@ if(count($_POST) > 0){
 
         // Executar a primeira inserção
         if($stmt1->execute()){
+            $id_usuario = $conexao->insert_id;
             // Inserir em Cliente
-            $sql2 = "INSERT INTO Cliente (Usuario_cliente, Senha_cliente) VALUES (?, ?)";
+            $sql2 = "INSERT INTO Cliente (Usuario_cliente, Senha_cliente, ID_usuario_geral) VALUES (?, ?,?)";
             $stmt2 = $conexao->prepare($sql2);
 
             $params2 = [
                 $dados['Usuario_cliente'], // Garantido que não seja nulo
                 $dados['Senha_cliente'],
+                $id_usuario
             ];
-            $stmt2->bind_param("ss", ...$params2);
+            $stmt2->bind_param("ssi", ...$params2);
 
             // Executar a segunda inserção
             if($stmt2->execute()){
