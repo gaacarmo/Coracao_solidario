@@ -38,7 +38,7 @@
                     
                 }
             ?> 
-            <button><a href="home.php?dir=paginas&file=loginusu">Entrar</a></button>
+           
         </div>
     </header>
     <div class="cart-icon">
