@@ -77,7 +77,6 @@ if (isset($_POST['adicionar'])) {
 
 </main>
 
-<!-- Formulário para adicionar ao carrinho -->
 <div class="container_botao">
     <form method="POST">
         <!-- Passar o código do produto como um campo oculto -->
