@@ -96,7 +96,7 @@
                     <img src="assets/Sobre nós.png" alt="">
                 </div>
                 <p class="texto-produto">Sobre nós</p>
-                <a class="btn-index" href="home.php?dir=paginas&file=sobre_nos">Acessar</a>
+                <a class="btn-index" href="home.php?dir=paginas_adm&file=lista_usuarios">Acessar</a> <ada-- voltar ao norma l depois-->
             </div>
         </section>
     </main>
