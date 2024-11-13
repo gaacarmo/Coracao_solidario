@@ -36,7 +36,7 @@ if (isset($_GET['Excluir'])) {
 $sql = "SELECT Cliente.id, Usuario_geral.Nome_completo, Cliente.Usuario_cliente, 
         Usuario_geral.Email, Usuario_geral.Telefone 
         FROM Cliente 
-        INNER JOIN Usuario_geral ON Cliente.id = Usuario_geral.ID
+        INNER JOIN Usuario_geral ON Cliente.ID_usuario_geral = Usuario_geral.ID
         ORDER BY id";
         
 $resultado = $conexao->query($sql);
