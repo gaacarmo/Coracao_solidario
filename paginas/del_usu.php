@@ -1,5 +1,5 @@
 <?php
-require_once 'conexao.php';
+require_once './paginas/conexao.php';
 
 session_start();
 session_destroy();

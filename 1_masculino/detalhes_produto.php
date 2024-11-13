@@ -10,8 +10,8 @@ if (isset($_GET['codigo'])) {
 
     // Consulta para recuperar os dados do produto
     $sql = 'SELECT Cliente.Bairro, Cliente.Logradouro, Cliente.Numero, Usuario_geral.Telefone, 
-                   Produto.Nome, Produto.Categoria, Produto.Publico_alvo, Produto.Descricao, 
-                   Roupa.Tamanho_roupa, Produto.Condicao, Imagem.Caminho_imagem
+                Produto.Nome, Produto.Categoria, Produto.Publico_alvo, Produto.Descricao, 
+                Roupa.Tamanho_roupa, Produto.Condicao, Imagem.Caminho_imagem
             FROM Produto
             INNER JOIN Cadastro_produto ON Cadastro_produto.ID_produto = Produto.ID
             INNER JOIN Cliente ON Cliente.ID = Cadastro_produto.ID_cliente

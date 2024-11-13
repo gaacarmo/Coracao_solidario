@@ -4,7 +4,7 @@
 
 <?php
 
-require_once "conexao.php";
+require_once "./paginas/conexao.php";
 $conexao = novaConexao();
 
 
@@ -36,18 +36,18 @@ if (isset($_GET['Excluir'])) {
 $sql = "SELECT Cliente.id, Usuario_geral.Nome_completo, Cliente.Usuario_cliente, 
         Usuario_geral.Email, Usuario_geral.Telefone 
         FROM Cliente 
-        INNER JOIN Usuario_geral ON Cliente.id = Usuario_geral.ID
-        ORDER BY id";
-        
+        INNER JOIN Usuario_geral ON Cliente.ID_usuario_geral = Usuario_geral.ID
+        ORDER BY Cliente.id";
+
 $resultado = $conexao->query($sql);
 $registros = [];
 
-if ($resultado->num_rows > 0) {
+if ($resultado && $resultado->num_rows > 0) {
     while ($row = $resultado->fetch_assoc()) {
         $registros[] = $row; 
     }
 } elseif ($conexao->error) {
-    echo "Erro: " . $conexao->error;
+    echo "Erro ao executar a consulta SQL: " . $conexao->error;
 }
 
 if (count($registros) > 0) {
@@ -70,11 +70,11 @@ if (count($registros) > 0) {
                 <td class='registros-tabela'>{$registro['Telefone']}</td>
                 <td class='registros-tabela'>
                     <a class='botao-excluir' href='home.php?dir=paginas_adm&file=lista_usuarios&Excluir=" . $registro['id'] . "' 
-           onclick='return confirm(\"Tem certeza que deseja excluir este usuário?\")'> 
-           Excluir
+            onclick='return confirm(\"Tem certeza que deseja excluir este usuário?\")'> 
+            Excluir
         </a>
                 </td>
-              </tr>";
+            </tr>";
     }
     
     echo "</table>";
