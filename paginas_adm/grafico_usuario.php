@@ -50,8 +50,3 @@ if ($resultado->num_rows > 0) {
         chart.draw(data, options);
     }
 </script>
-<style>
-    .corpo{
-        
-    }
-</style>
