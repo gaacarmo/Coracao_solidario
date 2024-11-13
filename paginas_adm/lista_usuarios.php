@@ -30,7 +30,8 @@ if (isset($_GET['Excluir'])) {
 $sql = "SELECT Cliente.id, Usuario_geral.Nome_completo, Cliente.Usuario_cliente, 
         Usuario_geral.Email, Usuario_geral.Telefone 
         FROM Cliente 
-        INNER JOIN Usuario_geral ON Cliente.id = Usuario_geral.ID";
+        INNER JOIN Usuario_geral ON Cliente.id = Usuario_geral.ID
+        ORDER BY id";
         
 $resultado = $conexao->query($sql);
 $registros = [];
@@ -44,27 +45,28 @@ if ($resultado->num_rows > 0) {
 }
 
 if (count($registros) > 0) {
-    echo "<table border='1'>
+    echo "<table class='tabela'>
             <tr>
-                <th>ID</th>
-                <th>Nome completo</th>
-                <th>Nome de Usuário</th>
-                <th>Email</th>
-                <th>Telefone</th>
-                <th>Ação</th>
+                <th class='tabela'>ID</th>
+                <th class='tabela'>Nome completo</th>
+                <th class='tabela'>Nome de Usuário</th>
+                <th class='tabela'>Email</th>
+                <th class='tabela'>Telefone</th>
+                <th class='tabela'>Ação</th>
             </tr>";
     
     foreach ($registros as $registro) {
         echo "<tr>
-                <td>{$registro['id']}</td>
-                <td>{$registro['Nome_completo']}</td>
-                <td>{$registro['Usuario_cliente']}</td>
-                <td>{$registro['Email']}</td>
-                <td>{$registro['Telefone']}</td>
-                <td>
-                    <a href='home.php?dir=paginas_adm&file=lista_usuarios&Excluir=" . $registro['id'] . "'> 
-                        Excluir 
-                    </a> a URL vai precisar ser alterada
+                <td class='registros-tabela'>{$registro['id']}</td>
+                <td class='registros-tabela'>{$registro['Nome_completo']}</td>
+                <td class='registros-tabela'>{$registro['Usuario_cliente']}</td>
+                <td class='registros-tabela'>{$registro['Email']}</td>
+                <td class='registros-tabela'>{$registro['Telefone']}</td>
+                <td class='registros-tabela'>
+                    <a class='botao-excluir' href='home.php?dir=paginas_adm&file=lista_usuarios&Excluir=" . $registro['id'] . "' 
+           onclick='return confirm(\"Tem certeza que deseja excluir este usuário?\")'> 
+           Excluir
+        </a>
                 </td>
               </tr>";
     }
@@ -75,3 +77,51 @@ if (count($registros) > 0) {
 }
 ?>
 
+<style>
+    table.tabela {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    /* Cabeçalho da Tabela */
+    table.tabela th {
+        background-color: black;
+        color: white;
+        padding: 10px;
+        text-align: left;
+    }
+
+    /* Linhas com efeito de zebra */
+    table.tabela tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    table.tabela tr:nth-child(odd) {
+        background-color: #ffffff;
+    }
+
+    /* Células de dados */
+    table.tabela td {
+        padding: 10px;
+        text-align: left;
+    }
+
+ /* Botão vermelho de exclusão */
+ .botao-excluir {
+        display: inline-block;
+        padding: 8px 16px;
+        background-color: #FF4C4C;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s;
+        cursor: pointer;
+    }
+
+    .botao-excluir:hover {
+        background-color: #FF1C1C;
+    }
+</style>
+</style>
