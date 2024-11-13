@@ -42,17 +42,20 @@ header {
     align-items: center;
     background-color: white;
     padding: 10px 20px;
-    border-bottom: 1px solid black;
+    border-bottom: 5px solid black;
 }
 
 .logo {
     display: flex;
     align-items: center;
+    gap: 15px;
+    text-decoration: none;
 }
 
 .logo img {
-    height: 40px;
+    height: 70px;
     margin-right: 10px;
+    transition: transform 0.3s ease;
 }
 
 .logo .texto-titulo {
@@ -67,20 +70,22 @@ nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
+    border-radius: 10px;
 }
 
 nav ul li {
-    margin-right: 20px;
+    margin: 0 15px;
+    position: relative;
 }
 
 nav ul li a {
     text-decoration: none;
     color: black;
-    font-size: 16px;
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    border-radius: 30px;
     font-weight: bold;
-    padding: 8px 12px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 nav ul li a.active {
