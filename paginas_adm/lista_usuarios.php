@@ -9,22 +9,28 @@ $conexao = novaConexao();
 
 
 if (isset($_GET['Excluir'])) {
+    // Excluir os produtos associados primeiro
+    $excluirProdutosSQL = "DELETE FROM cadastro_produto WHERE ID_cliente = ?";
+    $stmtProdutos = $conexao->prepare($excluirProdutosSQL);
+    $stmtProdutos->bind_param("i", $_GET['Excluir']);
+    $stmtProdutos->execute();
 
+    // Excluir o cliente
     $excluirSQL = "DELETE FROM Cliente WHERE id = ?";
     $stmt = $conexao->prepare($excluirSQL);
     $stmt->bind_param("i", $_GET['Excluir']);
     $stmt->execute();
 
-
+    // Excluir o usuário associado
     $excluirUsuarioSQL = "DELETE FROM Usuario_geral WHERE ID = ?";
     $stmtUsuario = $conexao->prepare($excluirUsuarioSQL);
     $stmtUsuario->bind_param("i", $_GET['Excluir']);
     $stmtUsuario->execute();
 
-
-    header("Location: home.php?dir=paginas_adm&file=lista_usuarios"); # a URL vai precisar ser alterada
-    exit();  
+    header("Location: home.php?dir=paginas_adm&file=lista_usuarios");
+    exit();
 }
+
 
 
 $sql = "SELECT Cliente.id, Usuario_geral.Nome_completo, Cliente.Usuario_cliente, 
@@ -107,7 +113,7 @@ if (count($registros) > 0) {
     }
 
  /* Botão vermelho de exclusão */
- .botao-excluir {
+    .botao-excluir {
         display: inline-block;
         padding: 8px 16px;
         background-color: #FF4C4C;

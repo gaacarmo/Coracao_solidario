@@ -36,6 +36,8 @@
                 if (!(isset($_SESSION['is_logged_in'])) || $_SESSION['is_logged_in'] !== true) {
                     echo '<button><a href="home.php?dir=paginas&file=loginusu">Entrar</a></button>';
                     
+                }else{
+                    echo '<button><a href="home.php?dir=paginas&file=del_usu">Sair</a></button>';
                 }
             ?> 
            
