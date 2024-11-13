@@ -1,0 +1,68 @@
+
+.sobre-nos {
+    display: flex;
+    max-width: 1000px; 
+}
+
+.sobre-nos .texto {
+    margin-top: 100px;
+    width: 65%;
+    padding-right: 30px;
+    border-right: 3px solid black;
+}
+
+.sobre-nos .texto h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.texto-bio{
+    font-size: 24px;
+    
+}
+.sobre-nos .texto p {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.sobre-nos .imagem {
+    margin-top: 100px;
+    width: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sobre-nos .imagem img {
+    width: 400px;
+    height: 400px;
+    margin-left: 100px;
+    max-width: 400px; 
+}
+
+.feedback {
+    text-align: center; /* Centraliza o botão no contêiner */
+    margin-top: 20px; /* Espaço entre a seção e o botão */
+    margin-bottom: 100px;
+}
+
+.feedback .feedback-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #333;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none; /* Remove o sublinhado do link */
+}
+
+.feedback .feedback-button:hover {
+    background-color: white;
+    color: black;
+}
+
+
