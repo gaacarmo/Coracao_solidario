@@ -175,6 +175,11 @@ footer {
     text-align: center;
     justify-content: flex-end;
     
+    position: fixed;
+    width: 100%;
+
+    text-align: center;
+    
 }
 
 .footer-content {

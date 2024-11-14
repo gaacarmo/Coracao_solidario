@@ -1,9 +1,9 @@
 <?php
 require_once "conexao.php";
 $conexao = novaConexao();
-$sql= "SELECT Publico_alvo, COUNT(Publico_alvo) AS qntd
+$sql= "SELECT Categoria, COUNT(Categoria) AS qntd
         FROM produto
-        GROUP BY Publico_alvo
+        GROUP BY Categoria
         ORDER BY qntd DESC;";
 $resultado = $conexao->query($sql);
 $registros = [];
@@ -24,6 +24,7 @@ if ($resultado->num_rows > 0) {
     <title>Document</title>
 </head>
 <body>
+<a href="home_adm.php?dir=paginas_adm&file=tela_inicial_graficos"><img class="voltar" src="assets/de-volta.png" alt="Voltar"></a>
     <div class="corpo" id="piechart" style="width: 1000px; height: 500px;"></div>
 </body>
 </html>
@@ -37,7 +38,7 @@ if ($resultado->num_rows > 0) {
             ['Público Alvo', 'Quantidade'],
             <?php
             foreach ($registros as $registro) {
-                echo "['" . $registro['Publico_alvo'] . "', " . $registro['qntd'] . "],";
+                echo "['" . $registro['Categoria'] . "', " . $registro['qntd'] . "],";
             }
             ?>
         ]);
@@ -50,3 +51,27 @@ if ($resultado->num_rows > 0) {
         chart.draw(data, options);
     }
 </script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Público Alvo', 'Quantidade'],
+            <?php
+            foreach ($registros as $registro) {
+                echo "['" . $registro['Categoria'] . "', " . $registro['qntd'] . "],";
+            }
+            ?>
+        ]);
+
+        var options = {
+            title: 'Distribuição por porcentagem do Público Alvo'
+        };
+
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+      }
+    </script>
+    <style></style>

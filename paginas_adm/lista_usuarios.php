@@ -1,6 +1,6 @@
 
 
-<h1>Usuários</h1>
+<h1 class="titulo">Usuários</h1>
 
 <?php
 
@@ -103,9 +103,15 @@ if (count($registros) > 0) {
 ?>
 
 <style>
+    .titulo{
+        text-align: center;
+  
+        font-weight: 1.2rem;
+    }
     table.tabela {
         width: 100%;
         border-collapse: collapse;
+        margin: 3% 0px 0px 30px;
     }
 
     /* Cabeçalho da Tabela */
