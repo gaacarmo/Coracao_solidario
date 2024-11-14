@@ -10,11 +10,11 @@
     <header>
     <div class="logo">
             <a href="#">
-                <img class="logo" src="assets/logo coracao.png" alt="Coração Solidário">
+                <img class="logo" src="../assets/logo coracao.png" alt="Coração Solidário">
             </a>
              <a class="texto-titulo">Coração Solidário</a>
     </div>
-   
+
     <nav>
         <ul>
             <li><a href="#" class="active">Gerenciar usuários</a></li>
