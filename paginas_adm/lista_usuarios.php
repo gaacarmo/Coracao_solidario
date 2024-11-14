@@ -9,23 +9,42 @@ $conexao = novaConexao();
 
 
 if (isset($_GET['Excluir'])) {
-    // Excluir os produtos associados primeiro
-    $excluirProdutosSQL = "DELETE FROM cadastro_produto WHERE ID_cliente = ?";
-    $stmtProdutos = $conexao->prepare($excluirProdutosSQL);
-    $stmtProdutos->bind_param("i", $_GET['Excluir']);
-    $stmtProdutos->execute();
+ 
+$conexao->autocommit(FALSE);
+$conexao->begin_transaction();
+$transacao_sucesso = true;
 
-    // Excluir o cliente
-    $excluirSQL = "DELETE FROM Cliente WHERE id = ?";
-    $stmt = $conexao->prepare($excluirSQL);
-    $stmt->bind_param("i", $_GET['Excluir']);
-    $stmt->execute();
+$excluirProdutosSQL = "DELETE FROM cadastro_produto WHERE ID_cliente = ?";
+$stmtProdutos = $conexao->prepare($excluirProdutosSQL);
+$stmtProdutos->bind_param("i", $_GET['Excluir']);
+if (!$stmtProdutos->execute()) {
+    $transacao_sucesso = false;
+}
 
-    // Excluir o usuário associado
-    $excluirUsuarioSQL = "DELETE FROM Usuario_geral WHERE ID = ?";
-    $stmtUsuario = $conexao->prepare($excluirUsuarioSQL);
-    $stmtUsuario->bind_param("i", $_GET['Excluir']);
-    $stmtUsuario->execute();
+$excluirSQL = "DELETE FROM Cliente WHERE id = ?";
+$stmt = $conexao->prepare($excluirSQL);
+$stmt->bind_param("i", $_GET['Excluir']);
+if (!$stmt->execute()) {
+    $transacao_sucesso = false;
+}
+
+
+$excluirUsuarioSQL = "DELETE FROM Usuario_geral WHERE ID = ?";
+$stmtUsuario = $conexao->prepare($excluirUsuarioSQL);
+$stmtUsuario->bind_param("i", $_GET['Excluir']);
+if (!$stmtUsuario->execute()) {
+    $transacao_sucesso = false;
+}
+
+// Verifica o resultado da transação e executa COMMIT ou ROLLBACK
+if ($transacao_sucesso) {
+    $conexao->commit();
+} else {
+    $conexao->rollback();
+    echo "Erro ao excluir dados.";
+}
+
+$conexao->autocommit(TRUE);
 
     header("Location: home.php?dir=paginas_adm&file=lista_usuarios");
     exit();
