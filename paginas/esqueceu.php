@@ -158,7 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $conn = novaConexao();
 
         // Consulta preparada para evitar SQL Injection
-        $sql = $conn->prepare("SELECT id FROM usuarios WHERE email = ? LIMIT 1");
+        $sql = $conn->prepare("SELECT id FROM usuario_geral WHERE Email = ? LIMIT 1");
         $sql->bind_param('s', $email);
         $sql->execute();
         $result = $sql->get_result();
