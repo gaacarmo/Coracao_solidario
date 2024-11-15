@@ -28,6 +28,13 @@
             <input type="password" name="nova_senha" class="input" placeholder="Insira sua nova senha">
         </div>
     </div>
+    <div class="flex-column">
+        <label>Confirme sua senha</label>
+        <div class="inputForm">
+            <input type="password" name="nova_senha_c" class="input" placeholder="Confirme sua nova senha">
+        </div>
+
+    </div>
 
     <button class="button-entrar">Confirmar</button>
 </form>
