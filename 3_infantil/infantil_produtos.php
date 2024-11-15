@@ -2,7 +2,9 @@
     echo '<h1>Infantil</h1>';
     require_once './paginas/conexao.php';
     $conexao = novaConexao();
-
+    ?>
+    <a href="./index.php"><img class="voltar" src="assets/de-volta.png" alt="Voltar"></a>
+    <?php
     $sql = "SELECT Produto.ID,Produto.Nome,Roupa.Tamanho_roupa,Imagem.Caminho_imagem FROM Produto 
     INNER JOIN Imagem ON Imagem.ID_produto = Produto.ID 
     INNER JOIN Roupa ON Roupa.ID_produto = produto.ID
@@ -34,3 +36,14 @@
         echo '<p>Erro na consulta ao banco de dados.</p>';
     }
 ?>
+<style>
+    .voltar {
+        position: absolute;
+        top: 120px;
+        bottom: 10px;
+        left: 20px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
+</style>

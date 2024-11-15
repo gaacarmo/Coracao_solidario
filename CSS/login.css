@@ -118,3 +118,12 @@
       text-decoration: none ;
       color: blue;
   }
+  .voltar {
+    position: absolute;
+    top: 120px;
+    bottom: 10px;
+    left: 20px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}

@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="./CSS/carrinho.css">
 <div class="titulo">
     <h1>Carrinho</h1>
+    <a href="./index.php"><img class="voltar" src="assets/de-volta.png" alt="Voltar"></a>
     <?php
     if (!(isset($_SESSION['is_logged_in'])) || $_SESSION['is_logged_in'] !== true) {
         echo "<script>alert('Para acessar esta página, é necessário fazer login.');
@@ -48,3 +49,14 @@ if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
 <form class="form_finalizar">
     <button>Finalizar pedido</button>
 </form>
+<style>
+    .voltar {
+        position: absolute;
+        top: 120px;
+        bottom: 10px;
+        left: 20px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
+</style>

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./CSS/login.css">
 
 <h1>Esqueceu sua Senha?</h1>
+<a href="home.php?dir=paginas&file=loginusu"><img class="voltar" src="assets/de-volta.png" alt="Voltar"></a>
 <form class="form" method="post">
     <div class="flex-column">
         <label>Email </label>
@@ -36,7 +37,8 @@
 
     </div>
 
-    <button class="button-entrar">Confirmar</button>
+    <button class="button-entrar">Confirmar
+    </button>
 </form>
 
 
@@ -128,6 +130,15 @@ h1 {
 .button-entrar:hover {
     background-color: #252727;
 }
+.voltar {
+        position: absolute;
+        top: 120px;
+        bottom: 10px;
+        left: 20px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
 </style>
 
 <?php

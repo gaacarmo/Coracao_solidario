@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/sobrenos.css">
     <title>Sobre Nós - Coração Solidário</title>
+
 </head>
 <body>
     <section class="sobre-nos">
         <div class="texto">
             <h2>Sobre nós</h2>
+            <a href="./index.php"><img class="voltar" src="assets/de-volta.png" alt="Voltar"></a>
             <p class="texto-bio">Nosso projeto nasceu com o objetivo de facilitar doações de roupas, conectando quem deseja ajudar a quem mais precisa. 
                 Criamos uma plataforma acessível e intuitiva para simplificar esse processo, ajudando tanto as pessoas que querem doar, mas não sabem onde,
                 quanto aquelas que buscam ajuda e enfrentam dificuldades em encontrar doações de forma prática e direta.
@@ -28,3 +30,14 @@
     </div>
 </body>
 </html>
+<style>
+    .voltar {
+        position: absolute;
+        top: 120px;
+        bottom: 10px;
+        left: 20px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
+</style>

@@ -98,7 +98,7 @@
                     <img src="assets/Sobre nós.png" alt="">
                 </div>
                 <p class="texto-produto">Sobre nós</p>
-                <a class="btn-index" href="home.php?dir=paginas_adm&tela_inicial_graficos">Acessar</a> <ada-- voltar ao norma l depois-->
+                <a class="btn-index" href="home.php?dir=paginas&file=sobre_nos">Acessar</a> 
             </div>
         </section>
     </main>

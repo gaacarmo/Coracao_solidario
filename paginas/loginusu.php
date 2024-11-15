@@ -68,6 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <link rel="stylesheet" href="./CSS/login.css">
 
 <h1>Login</h1>
+<a href="./index.php"><img class="voltar" src="assets/de-volta.png" alt="Voltar"></a>
 <form class="form" method="post">
     <div class="flex-column">
         <label>Username </label>
@@ -105,3 +106,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php endforeach; ?>
     </div>
 <?php endif; ?>
+
+<style>
+    .voltar {
+        position: absolute;
+        top: 120px;
+        bottom: 10px;
+        left: 20px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
+</style>

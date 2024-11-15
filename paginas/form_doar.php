@@ -113,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 ?>
-
+<a href="./index.php"><img class="voltar" src="assets/de-volta.png" alt="Voltar"></a>
 <form class="form"  method="POST" enctype="multipart/form-data">
     <div>
         <label class="espaçamento" for="NomeProduto">Qual o nome do produto?</label>
@@ -204,3 +204,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="button" onclick="window.location.href='index.php'">Cancelar</button> <!-- Retorna para a página principal --->
     </div>
 </form>
+
+<style>
+    .voltar {
+        position: absolute;
+        top: 120px;
+        bottom: 10px;
+        left: 20px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
+</style>

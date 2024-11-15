@@ -216,3 +216,15 @@ if(count($_POST) > 0){
             <button class="btn" type="submit">Cadastrar</button>
         </div>
 </form>
+
+<style>
+    .voltar {
+        position: absolute;
+        top: 120px;
+        bottom: 10px;
+        left: 20px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
+</style>
