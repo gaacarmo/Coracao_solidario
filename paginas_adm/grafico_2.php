@@ -21,11 +21,14 @@ if ($resultado->num_rows > 0) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Analise de categorias mais cadastradas</title>
 </head>
 <body>
-<a href="home_adm.php?dir=paginas_adm&file=tela_inicial_graficos"><img class="voltar" src="assets/de-volta.png" alt="Voltar"></a>
-    <div class="corpo" id="piechart" style="width: 1000px; height: 500px;"></div>
+    <h1 class="titulo">Distribuição por porcentagem do Público Alvo</h1>
+    <a href="home_adm.php?dir=paginas_adm&file=tela_inicial_graficos"><img class="voltar" src="assets/de-volta.png" alt="Voltar"></a>
+    <div class="container">
+        <div class="corpo" id="piechart" style="width: 1000px; height: 500px;"></div>
+    </div> 
 </body>
 </html>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -44,7 +47,7 @@ if ($resultado->num_rows > 0) {
         ]);
 
         var options = {
-            title: 'Distribuição por porcentagem do Público Alvo'
+            title: 'Roupa e Calçado'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -55,6 +58,7 @@ if ($resultado->num_rows > 0) {
     <script type="text/javascript">
       google.charts.load("current", {packages:["corechart"]});
       google.charts.setOnLoadCallback(drawChart);
+
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
             ['Público Alvo', 'Quantidade'],
@@ -66,7 +70,10 @@ if ($resultado->num_rows > 0) {
         ]);
 
         var options = {
-            title: 'Distribuição por porcentagem do Público Alvo'
+            title: 'Roupa e Calçado',
+            titleTextStyle: { fontSize: 20, bold: true },
+            legend: { position: 'right', textStyle: { fontSize: 14 } },
+            chartArea: { width: '50%', height: '80%' }
         };
 
 
@@ -74,4 +81,39 @@ if ($resultado->num_rows > 0) {
         chart.draw(data, options);
       }
     </script>
-    <style></style>
+   <style>
+
+
+    
+.titulo{
+    text-align: center;
+}
+.container {
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.chart-container {
+    width: 80%;
+    max-width: 1200px;
+    height: 500px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.voltar {
+    position: absolute;
+    top: 95px;
+    left: 20px;
+    width: 30px;
+    height: 40px;
+    cursor: pointer;
+}
+</style>

@@ -24,10 +24,8 @@ if ($resultado->num_rows > 0) {
     <title>Distribuição do Público Alvo</title>
 </head>
 <body>
-    <h1 class="titulo">Distribuição por porcentagem do Público Alvo
-    </h1>
+    <h1 class="titulo">Distribuição por porcentagem do Público Alvo </h1>
     <a href="home_adm.php?dir=paginas_adm&file=tela_inicial_graficos"><img class="voltar" src="assets/de-volta.png" alt="Voltar"></a>
-    
     <div class="container">
         <div class="chart-container" id="piechart"></div>
     </div>
