@@ -144,6 +144,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "<p style='color: red; text-align: center;'>As senhas não conferem. Por favor, tente novamente.</p>";
     }
 }
+// Inclui o arquivo de conexão
+require_once 'conexao.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Captura o email do formulário
+    $email = $_POST['email'] ?? '';
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "<p style='color: red; text-align: center;'>Formato de email inválido.</p>";
+    } else {
+        // Estabelece conexão com o banco
+        $conn = novaConexao();
+
+        // Consulta preparada para evitar SQL Injection
+        $sql = $conn->prepare("SELECT id FROM usuarios WHERE email = ? LIMIT 1");
+        $sql->bind_param('s', $email);
+        $sql->execute();
+        $result = $sql->get_result();
+
+        if ($result->num_rows > 0) {
+            echo "<p style='color: green; text-align: center;'>O email existe no banco de dados.</p>";
+            // Você pode prosseguir com outras ações, como enviar o código de verificação
+        } else {
+            echo "<p style='color: red; text-align: center;'>Email não encontrado no banco de dados.</p>";
+        }
+
+        // Fecha a conexão
+        $conn->close();
+    }
+}
 ?>
 
 
