@@ -129,3 +129,21 @@ h1 {
     background-color: #252727;
 }
 </style>
+
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Captura os dados do formulário
+    $novaSenha = $_POST['nova_senha'] ?? '';
+    $confirmaSenha = $_POST['nova_senha_c'] ?? '';
+
+    // Valida se as senhas são iguais
+    if ($novaSenha === $confirmaSenha) {
+        echo "<p style='color: green; text-align: center;'>Senha validada com sucesso!</p>";
+        
+    } else {
+        echo "<p style='color: red; text-align: center;'>As senhas não conferem. Por favor, tente novamente.</p>";
+    }
+}
+?>
+
+?>
