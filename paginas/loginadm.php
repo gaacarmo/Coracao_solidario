@@ -34,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Login bem-sucedido
                 // Aqui você pode redirecionar o usuário ou iniciar uma sessão
                 unset($dados);
+                header("Location: index_adm.php");
             } else {
                 // Usuário ou senha incorretos
                 $erros['login'] = "Nome de usuário ou senha incorretos.";

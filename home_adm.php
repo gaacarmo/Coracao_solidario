@@ -9,7 +9,7 @@
 <body>
     <header>
     <div class="logo">
-            <a href="./index.php">
+            <a href="./index_adm.php">
                 <img class="logo" src="./assets/logo coracao.png" alt="Coração Solidário">
             </a>
              <a class="texto-titulo">Coração Solidário</a>

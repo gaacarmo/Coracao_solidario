@@ -17,7 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (count($erros) == 0) {
         require_once("conexao.php");
         $conexao = novaConexao();
-        session_start();
 
         $sql = "SELECT * FROM Cliente WHERE Usuario_cliente=? AND Senha_cliente=?";
         $stmt = $conexao->prepare($sql);
