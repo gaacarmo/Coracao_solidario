@@ -82,8 +82,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
     <div class="flex-row">
-        <span class="span" >Esqueceu a senha?</span>
-        <p class="p"><span class="span"><a href="home.php?dir=paginas&file=cadastrousu" class="conta">Não tem conta?</a></span>
+        <span class="span"><a href="home.php?dir=paginas&file=esqueceu" class="esqueceu">Esqueceu a senha?</a></span>
+            <p class="p">
+                <span class="span">
+                    <a href="home.php?dir=paginas&file=cadastrousu" class="conta">Não tem conta?</a>
+                </span>
+            </p>
     </div>
 
     <div>
