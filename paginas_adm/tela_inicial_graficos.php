@@ -68,21 +68,21 @@ $conexao = novaConexao();
         <div class="img-produto">
             <img src="assets/grafico 1.png" alt="doação">
         </div>
-        <p class="texto-produto">Analise do publico alvo</p>
+        <p class="texto-produto">Análise do publico alvo</p>
         <a class="btn-index" href='home_adm.php?dir=paginas_adm&file=grafico_1'>Gráfico 01</a>
     </div>
     <div class="product">
         <div class="img-produto">
             <img src="assets/grafico 2.png" alt="doação">
         </div>
-        <p class="texto-produto">Analise de categorias mais cadastradas</p>
+        <p class="texto-produto">Análise de categorias mais cadastradas</p>
         <a class="btn-index" href='home_adm.php?dir=paginas_adm&file=grafico_2'>Gráfico 02</a>
     </div>
     <div class="product">
         <div class="img-produto">
             <img src="assets/doacao.jpg" alt="doação">
         </div>
-        <p class="texto-produto">#</p>
-        <a class="btn-index" href='home_adm.php?dir=paginas_adm&file=grafico_usuario'>Gráfico 03</a>
+        <p class="texto-produto">Análise das condições dos produtos</p>
+        <a class="btn-index" href='home_adm.php?dir=paginas_adm&file=grafico_3'>Gráfico 03</a>
     </div>
 </section>

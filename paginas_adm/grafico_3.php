@@ -1,9 +1,9 @@
 <?php
 require_once "./paginas/conexao.php";
 $conexao = novaConexao();
-$sql= "SELECT Publico_alvo, COUNT(Publico_alvo) AS qntd
+$sql= "SELECT Condicao, COUNT(Condicao) AS qntd
         FROM produto
-        GROUP BY Publico_alvo
+        GROUP BY Condicao
         ORDER BY qntd DESC;";
 $resultado = $conexao->query($sql);
 $registros = [];
@@ -24,10 +24,10 @@ if ($resultado->num_rows > 0) {
     <title>Analise de categorias mais cadastradas</title>
 </head>
 <body>
-    <h1 class="titulo">Distribuição por porcentagem do Público Alvo</h1>
+    <h1 class="titulo">Distribuição por porcentagem das categorias</h1>
     <a href="home_adm.php?dir=paginas_adm&file=tela_inicial_graficos"><img class="voltar" src="assets/de-volta.png" alt="Voltar"></a>
     <div class="container">
-        <div class="corpo" id="piechart" style="width: 1000px; height: 500px;"></div>
+        <div class="corpo" id="piechart" style="width: 900px; height: 500px;"></div>
     </div> 
 </body>
 </html>
@@ -41,13 +41,14 @@ if ($resultado->num_rows > 0) {
             ['Público Alvo', 'Quantidade'],
             <?php
             foreach ($registros as $registro) {
-                echo "['" . $registro['Publico_alvo'] . "', " . $registro['qntd'] . "],";
+                echo "['" . $registro['Condicao'] . "', " . $registro['qntd'] . "],";
             }
             ?>
         ]);
 
         var options = {
-            title: 'Masculino, Feminino e Infantil'
+            title: 'Roupa e Calçado',
+            is3D: true,
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));

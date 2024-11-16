@@ -20,7 +20,7 @@
             <ul>
                 <li><a href="home_adm.php?dir=paginas_adm&file=lista_usuarios" class="active">Gerenciar usuários</a></li>
                 <li><a href="home_adm.php?dir=paginas_adm&file=tela_inicial_graficos" class="active">Relatório estatístico</a></li>
-                <li><a href="#" class="active">Analisar produtos</a></li>
+                <li><a href="home_adm.php?dir=paginas_adm&file=analise_produtos" class="active">Analisar produtos</a></li>
             </ul>
         </nav>
         <div class="admin">

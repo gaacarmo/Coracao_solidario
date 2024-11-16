@@ -51,7 +51,7 @@ if (isset($_POST['aceitar'])) {
 
     if ($stmt->execute()) {
         echo "<script>window.alert("Produto adicionado ao site com sucesso")</script>";
-        header("location: home_admin.php?dir=paginas_adm&file=analise_produtos")
+        header("location: home_admin.php?dir=paginas_adm&file=analise_produtos");
     } else {
         echo "<script>window.alert("Erro ao adicionar o produto ao site")</script>";
     }
