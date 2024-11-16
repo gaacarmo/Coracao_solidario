@@ -71,7 +71,7 @@ if ($resultado->num_rows > 0) {
         ]);
 
         var options = {
-            title: 'Roupa e Calçado',
+            title: 'Usado, Semiusado e Novo',
             titleTextStyle: { fontSize: 20, bold: true },
             legend: { position: 'right', textStyle: { fontSize: 14 } },
             chartArea: { width: '50%', height: '80%' }
