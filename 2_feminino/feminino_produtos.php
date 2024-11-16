@@ -47,5 +47,4 @@
         height: 30px;
         cursor: pointer;
     }
-    
 </style>

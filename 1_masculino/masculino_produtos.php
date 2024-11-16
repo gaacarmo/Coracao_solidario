@@ -18,8 +18,8 @@
             while ($produto = $resultado->fetch_assoc()) {
                 ?>
                 <div class="product">
-                    <div class="img-produto">
-                        <img src="<?php echo htmlspecialchars($produto['Caminho_imagem']); ?>" alt="<?php echo htmlspecialchars($produto['Nome']); ?>">
+                    <div class="img_produto">
+                        <img class="img_masculino" src="<?php echo htmlspecialchars($produto['Caminho_imagem']); ?>" alt="<?php echo htmlspecialchars($produto['Nome']); ?>">
                     </div>
                     <p class="texto-produto"><?php echo htmlspecialchars($produto['Nome']); ?></p>
                     <p class="sub-titulo">Tamanho: <?php echo htmlspecialchars($produto['Tamanho_roupa']); ?></p>
@@ -46,10 +46,12 @@
         height: 30px;
         cursor: pointer;
     }
-    footer{
-        bottom: 0;
-        position: relative;
-        width: 100%;
-        text-align: center;
+
+    .img_produto img {
+        width: 100%; 
+        object-fit: cover; 
+        border-radius: 8px;
+        max-width: 350px;
+        height: 200px;
     }
 </style>

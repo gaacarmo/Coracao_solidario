@@ -8,13 +8,59 @@
         window.location.href = 'home.php?dir=paginas&&file=loginusu';
         </script>";
         exit;
-    }?>
+    }
+    ?>
 </div>
 <?php
+require_once 'conexao.php';
+$conexao = novaConexao();
+
+// Verifica se o botão "Finalizar pedido" foi clicado
+if (isset($_POST['finalizar'])) {
+    if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
+        // Obter o ID do cliente pelo nome de usuário
+        $sqlCliente = "SELECT ID FROM Cliente WHERE Usuario_cliente = ?";
+        $stmtCliente = $conexao->prepare($sqlCliente);
+        $stmtCliente->bind_param("s", $_SESSION['username']);
+        $stmtCliente->execute();
+        $resultCliente = $stmtCliente->get_result();
+
+        if ($resultCliente->num_rows > 0) {
+            $cliente = $resultCliente->fetch_assoc();
+            $idCliente = $cliente['ID'];
+
+            // Inserir os dados na tabela Entrega, verificando duplicatas
+            $sqlVerificar = "SELECT COUNT(*) AS total FROM Entrega WHERE ID_produto = ? AND ID_cliente = ?";
+            $sqlEntrega = "INSERT INTO Entrega (ID_produto, ID_cliente, Status_pedido) VALUES (?, ?, ?)";
+            $stmtVerificar = $conexao->prepare($sqlVerificar);
+            $stmtEntrega = $conexao->prepare($sqlEntrega);
+
+            foreach ($_SESSION['carrinho'] as $idProduto) {
+                $stmtVerificar->bind_param("ii", $idProduto, $idCliente);
+                $stmtVerificar->execute();
+                $resultVerificar = $stmtVerificar->get_result();
+                $row = $resultVerificar->fetch_assoc();
+
+                if ($row['total'] == 0) {
+                    // Somente insere se o registro ainda não existir
+                    $statusPedido = "Em espera";
+                    $stmtEntrega->bind_param("iis", $idProduto, $idCliente, $statusPedido);
+                    $stmtEntrega->execute();
+                }
+            }
+
+            // Limpa o carrinho após finalizar o pedido
+            unset($_SESSION['carrinho']);
+            echo "<script>alert('Pedido finalizado com sucesso!'); window.location.href = './index.php';</script>";
+        } else {
+            echo "<script>alert('Cliente não encontrado. Por favor, tente novamente.');</script>";
+        }
+    } else {
+        echo "<script>alert('Seu carrinho está vazio.');</script>";
+    }
+}
+
 if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
-    require_once 'conexao.php';
-    $conexao = novaConexao();
-    
     // Preparar a consulta para buscar os dados dos produtos
     $placeholders = implode(',', array_fill(0, count($_SESSION['carrinho']), '?'));
     $sql = "SELECT Produto.ID, Produto.Nome, Produto.Descricao, Imagem.Caminho_imagem
@@ -43,35 +89,15 @@ if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
         }
         echo "</div>";
     }
-
-    // Obter o ID do cliente pelo nome de usuário
-    ;$sqlCliente = "SELECT ID FROM Cliente WHERE Usuario_cliente = ?";
-    $stmtCliente = $conexao->prepare($sqlCliente);
-    $stmtCliente->bind_param("s", $_SESSION['username']);
-    $stmtCliente->execute();
-    $resultCliente = $stmtCliente->get_result();
-
-    if ($resultCliente->num_rows > 0) {
-        $cliente = $resultCliente->fetch_assoc();
-        $idCliente = $cliente['ID'];
-
-        // Inserir os dados na tabela Entrega
-        $sqlEntrega = "INSERT INTO Entrega (ID_produto, ID_cliente, Status_pedido) VALUES (?, ?, ?)";
-        $stmtEntrega = $conexao->prepare($sqlEntrega);
-
-        foreach ($_SESSION['carrinho'] as $idProduto) {
-            $statusPedido = "Em espera";
-            $stmtEntrega->bind_param("iis", $idProduto, $idCliente, $statusPedido);
-            $stmtEntrega->execute();
-        }
-    } else {
-        echo "<script>alert('Cliente não encontrado. Por favor, tente novamente.');</script>";
-    }
+} else {
+    echo "<p>Seu carrinho está vazio.</p>";
 }
 ?>
+
 <form class="form_finalizar" method="POST">
     <button type="submit" name="finalizar">Finalizar pedido</button>
 </form>
+
 <style>
     .voltar {
         position: absolute;
@@ -82,6 +108,26 @@ if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
         height: 30px;
         cursor: pointer;
     }
+
+    .container_produto {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .produto {
+        border: 1px solid #ccc;
+        padding: 15px;
+        text-align: center;
+        width: 250px;
+    }
+
+    .produto img {
+        max-width: 100%;
+        height: auto;
+    }
+
     footer{
         bottom: 0;
         position: relative;

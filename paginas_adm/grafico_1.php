@@ -1,5 +1,11 @@
 <?php
 require_once "./paginas/conexao.php";
+if (!(isset($_SESSION['is_logged_admin'])) || $_SESSION['is_logged_admin'] !== true) {
+    echo "<script>alert('Para acessar esta página, é necessário fazer login.');
+    window.location.href = 'home.php?dir=paginas&&file=loginadm';
+    </script>";
+    exit;
+}
 $conexao = novaConexao();
 $sql= "SELECT Publico_alvo, COUNT(Publico_alvo) AS qntd
         FROM produto

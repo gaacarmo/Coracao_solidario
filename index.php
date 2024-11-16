@@ -25,7 +25,7 @@
                 <li><a href="home.php?dir=1_masculino&file=masculino_produtos" class="active">Masculino</a></li>
                 <li><a href="home.php?dir=2_feminino&file=feminino_produtos" class="active">Feminino</a></li>
                 <li><a href="home.php?dir=3_infantil&file=infantil_produtos" class="active">Infantil</a></li>
-                <li><a href="home.php?dir=4_calcado&file=calcados_produtos" class="active">Calçados</a></li>
+                <li><a href="home.php?dir=4_calcados&file=calcados_produtos" class="active">Calçados</a></li>
                 <li><a href="home.php?dir=paginas&file=sobre_nos" class="active">Sobre Nós</a></li>
             </ul>
         </nav>
@@ -39,10 +39,8 @@
                 }else{
                     echo '<button><a href="home.php?dir=paginas&file=minhas_doacoes">Minhas Doações</a></button>';
                     echo '<button><a href="home.php?dir=paginas&file=del_usu">Sair</a></button>';
-                   
                 }
             ?> 
-           
         </div>
     </header>
     <div class="cart-icon">
@@ -55,7 +53,7 @@
         echo "<h1 class='titulo-pag'>Coração Solidário - Bem-vindo,  {$_SESSION['username']} !</h1>";
         // Aqui você pode exibir conteúdo restrito ou dados do usuário
     } else{
-        echo "<h1 class='titulo-pag'>Coração Solidário</h1>";
+        echo "<h1 class='titulo_pag'>Coração Solidário</h1>";
     } ?>
     
     <main class="principal">
@@ -93,7 +91,7 @@
                     <img src="assets/calçados.webp" alt="">
                 </div>
                 <p class="texto-produto">Calçados</p>
-                <a class="btn-index" href="home.php?dir=4_calcado&file=calcados_produtos">Acessar</a>
+                <a class="btn-index" href="home.php?dir=4_calcados&file=calcados_produtos">Acessar</a>
             </div>
             <div class="product">
                 <div class="img-produto ">
@@ -143,12 +141,7 @@
         color: white;
         font-weight: bold;
     }
-    footer{
-        bottom: 0;
-        position: relative;
-        width: 100%;
-        text-align: center;
-    }
+
     h1{
         text-align: center;
     }

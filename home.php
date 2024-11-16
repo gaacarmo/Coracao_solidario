@@ -1,3 +1,4 @@
+
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -34,7 +35,6 @@
                 echo '<button><a href="home.php?dir=paginas&file=loginusu">Entrar</a></button>';
                 
             }else{
-                echo '<button><a href="home.php?dir=paginas&file=minhas_doacoes">Minhas Doações</a></button>';
                 echo '<button><a href="home.php?dir=paginas&file=del_usu">Sair</a></button>';
             }
             ?> 
@@ -107,6 +107,7 @@
         color: white;
         font-weight: bold;
     }
+
     h1{
         text-align: center;
     }

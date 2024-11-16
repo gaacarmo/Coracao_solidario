@@ -88,6 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         height: 30px;
         cursor: pointer;
     }
+
     footer{
         bottom: 0;
         position: relative;

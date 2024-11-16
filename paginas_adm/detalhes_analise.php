@@ -3,6 +3,13 @@
 
 require_once './paginas/conexao.php';
 $conexao = novaConexao();
+if (!(isset($_SESSION['is_logged_admin'])) || $_SESSION['is_logged_admin'] !== true) {
+    echo "<script>alert('Para acessar esta página, é necessário fazer login.');
+    window.location.href = 'home.php?dir=paginas&&file=loginadm';
+    </script>";
+    exit;
+}
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -117,6 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+<h1 class="Titulo">Detalhes produtos</h1>
 <main>
     <div class="container_principal">
         <div>
@@ -172,7 +180,12 @@ h1.Titulo {
 .container_principal img.imagem_principal {
     max-width: 100%;
     height: auto;
- 
+
+}
+
+.imagem_principal {
+    width: 350px;
+    height: 300px;
 }
 
 .container_principal div:last-child {

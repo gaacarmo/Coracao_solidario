@@ -1,5 +1,11 @@
 <?php
 require_once "./paginas/conexao.php";
+if (!(isset($_SESSION['is_logged_admin'])) || $_SESSION['is_logged_admin'] !== true) {
+    echo "<script>alert('Para acessar esta página, é necessário fazer login.');
+    window.location.href = 'home.php?dir=paginas&&file=loginadm';
+    </script>";
+    exit;
+}
 $conexao = novaConexao();
 $sql= "SELECT Condicao, COUNT(Condicao) AS qntd
         FROM produto
@@ -71,7 +77,7 @@ if ($resultado->num_rows > 0) {
         ]);
 
         var options = {
-            title: 'Usado, Semiusado e Novo',
+            title: 'Roupa e Calçado',
             titleTextStyle: { fontSize: 20, bold: true },
             legend: { position: 'right', textStyle: { fontSize: 14 } },
             chartArea: { width: '50%', height: '80%' }

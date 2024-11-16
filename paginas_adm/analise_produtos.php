@@ -3,6 +3,12 @@ echo '<h1>Página análise produtos</h1>';
 
 require_once './paginas/conexao.php';
 $conexao = novaConexao();
+if (!(isset($_SESSION['is_logged_admin'])) || $_SESSION['is_logged_admin'] !== true) {
+    echo "<script>alert('Para acessar esta página, é necessário fazer login.');
+    window.location.href = 'home.php?dir=paginas&&file=loginadm';
+    </script>";
+    exit;
+}
 ?>
 <link rel="stylesheet" href="./CSS/style.css">
 <a href="./index_adm.php"><img class="voltar" src="assets/de-volta.png" alt="Voltar"></a>

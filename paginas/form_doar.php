@@ -221,4 +221,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         width: 100%;
         text-align: center;
     }
+
 </style>

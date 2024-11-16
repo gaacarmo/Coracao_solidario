@@ -64,6 +64,13 @@ h1 {
     margin-bottom: 20px;
 }
 
+footer{
+    bottom: 0;
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
 ::placeholder {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
@@ -138,12 +145,6 @@ h1 {
         width: 30px;
         height: 30px;
         cursor: pointer;
-    }
-    footer{
-        bottom: 0;
-        position: relative;
-        width: 100%;
-        text-align: center;
     }
 </style>
 
