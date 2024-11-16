@@ -141,7 +141,7 @@ h1 {
     }
     footer{
         bottom: 0;
-        position: fixed;
+        position: relative;
         width: 100%;
         text-align: center;
     }

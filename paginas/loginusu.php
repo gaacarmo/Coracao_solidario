@@ -119,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     footer{
         bottom: 0;
-        position: fixed;
+        position: relative;
         width: 100%;
         text-align: center;
     }

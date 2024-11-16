@@ -1,4 +1,4 @@
-<h1>Masculino</h1>
+<h1 class="titulo-pag">Masculino</h1>
 <link rel="stylesheet" href="./CSS/detalhes_produto.css">
 
 <?php

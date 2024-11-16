@@ -52,10 +52,10 @@
     
     <?php
     if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true) {
-        echo "<h1>Coração Solidário - Bem-vindo,  {$_SESSION['username']} !</h1>";
+        echo "<h1 class='titulo-pag'>Coração Solidário - Bem-vindo,  {$_SESSION['username']} !</h1>";
         // Aqui você pode exibir conteúdo restrito ou dados do usuário
     } else{
-        echo "<h1>Coração Solidário</h1>";
+        echo "<h1 class='titulo-pag'>Coração Solidário</h1>";
     } ?>
     
     <main class="principal">
@@ -147,6 +147,9 @@
         bottom: 0;
         position: relative;
         width: 100%;
+        text-align: center;
+    }
+    h1{
         text-align: center;
     }
 </style>

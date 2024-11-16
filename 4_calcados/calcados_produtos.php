@@ -1,5 +1,6 @@
+<h1 class='titulo-pag'>Infantil</h1>
 <?php
-    echo '<h1>Calçados</h1>';
+
     require_once './paginas/conexao.php';
     $conexao = novaConexao();
     ?>

@@ -1,4 +1,4 @@
-<h1>Feminino</h1>
+<h1 class='titulo-pag'>Feminino</h1>
 <link rel="stylesheet" href="./CSS/detalhes_produto.css">
 <?php
 require_once './paginas/conexao.php';
