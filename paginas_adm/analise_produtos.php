@@ -5,7 +5,7 @@ require_once './paginas/conexao.php';
 $conexao = novaConexao();
 ?>
 <link rel="stylesheet" href="./CSS/style.css">
-<a href="./index.php"><img class="voltar" src="assets/de-volta.png" alt="Voltar"></a>
+<a href="./index_adm.php"><img class="voltar" src="assets/de-volta.png" alt="Voltar"></a>
 <?php
 $sql = "SELECT Produto.ID, Produto.Nome, Calcado.Tamanho_calcado, Roupa.Tamanho_roupa, Imagem.Caminho_imagem 
         FROM Produto 
