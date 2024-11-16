@@ -35,6 +35,7 @@
                 echo '<button><a href="home.php?dir=paginas&file=loginusu">Entrar</a></button>';
                 
             }else{
+                echo '<button><a href="home.php?dir=paginas&file=minhas_doacoes">Minhas Doações</a></button>';
                 echo '<button><a href="home.php?dir=paginas&file=del_usu">Sair</a></button>';
             }
             ?> 

@@ -26,7 +26,7 @@
 .produto img {
     width: 100%;
     height: auto;
-    max-height: 200px;
+    max-height: 300px;
     border-radius: 8px;
     object-fit: cover;
     margin-bottom: 10px;
