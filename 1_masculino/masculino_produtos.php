@@ -47,8 +47,8 @@
         cursor: pointer;
     }
     footer{
-     
-        position: fixed;
+        bottom: 0;
+        position: relative;
         width: 100%;
         text-align: center;
     }

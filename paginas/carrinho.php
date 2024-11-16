@@ -40,14 +40,37 @@ if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
                 </div>
             </div>
             <?php
-        
         }
         echo "</div>";
     }
+
+    // Obter o ID do cliente pelo nome de usuário
+    ;$sqlCliente = "SELECT ID FROM Cliente WHERE Usuario_cliente = ?";
+    $stmtCliente = $conexao->prepare($sqlCliente);
+    $stmtCliente->bind_param("s", $_SESSION['username']);
+    $stmtCliente->execute();
+    $resultCliente = $stmtCliente->get_result();
+
+    if ($resultCliente->num_rows > 0) {
+        $cliente = $resultCliente->fetch_assoc();
+        $idCliente = $cliente['ID'];
+
+        // Inserir os dados na tabela Entrega
+        $sqlEntrega = "INSERT INTO Entrega (ID_produto, ID_cliente, Status_pedido) VALUES (?, ?, ?)";
+        $stmtEntrega = $conexao->prepare($sqlEntrega);
+
+        foreach ($_SESSION['carrinho'] as $idProduto) {
+            $statusPedido = "Em espera";
+            $stmtEntrega->bind_param("iis", $idProduto, $idCliente, $statusPedido);
+            $stmtEntrega->execute();
+        }
+    } else {
+        echo "<script>alert('Cliente não encontrado. Por favor, tente novamente.');</script>";
+    }
 }
 ?>
-<form class="form_finalizar">
-    <button>Finalizar pedido</button>
+<form class="form_finalizar" method="POST">
+    <button type="submit" name="finalizar">Finalizar pedido</button>
 </form>
 <style>
     .voltar {

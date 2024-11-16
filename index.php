@@ -143,4 +143,10 @@
         color: white;
         font-weight: bold;
     }
+    footer{
+        bottom: 0;
+        position: relative;
+        width: 100%;
+        text-align: center;
+    }
 </style>
