@@ -31,8 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($stmt->execute()) {
             $result = $stmt->get_result();
             if ($result->num_rows > 0) {
-                // Login bem-sucedido
-                // Aqui você pode redirecionar o usuário ou iniciar uma sessão
+                $_SESSION['username_admin'] = $dados['Usuario_admin'];
+                $_SESSION['is_logged_admin'] = true;
                 unset($dados);
                 header("Location: index_adm.php");
             } else {

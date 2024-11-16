@@ -4,50 +4,49 @@
 
 <?php
 
-require_once "conexao.php";
+require_once "./paginas/conexao.php";
 $conexao = novaConexao();
 
 
 if (isset($_GET['Excluir'])) {
- 
-$conexao->autocommit(FALSE);
-$conexao->begin_transaction();
-$transacao_sucesso = true;
+    $conexao->autocommit(FALSE);
+    $conexao->begin_transaction();
+    $transacao_sucesso = true;
 
-$excluirProdutosSQL = "DELETE FROM cadastro_produto WHERE ID_cliente = ?";
-$stmtProdutos = $conexao->prepare($excluirProdutosSQL);
-$stmtProdutos->bind_param("i", $_GET['Excluir']);
-if (!$stmtProdutos->execute()) {
-    $transacao_sucesso = false;
-}
+    $excluirProdutosSQL = "DELETE FROM cadastro_produto WHERE ID_cliente = ?";
+    $stmtProdutos = $conexao->prepare($excluirProdutosSQL);
+    $stmtProdutos->bind_param("i", $_GET['Excluir']);
+    if (!$stmtProdutos->execute()) {
+        $transacao_sucesso = false;
+    }
 
-$excluirSQL = "DELETE FROM Cliente WHERE id = ?";
-$stmt = $conexao->prepare($excluirSQL);
-$stmt->bind_param("i", $_GET['Excluir']);
-if (!$stmt->execute()) {
-    $transacao_sucesso = false;
-}
+    $excluirSQL = "DELETE FROM Cliente WHERE id = ?";
+    $stmt = $conexao->prepare($excluirSQL);
+    $stmt->bind_param("i", $_GET['Excluir']);
+    if (!$stmt->execute()) {
+        $transacao_sucesso = false;
+    }
 
 
-$excluirUsuarioSQL = "DELETE FROM Usuario_geral WHERE ID = ?";
-$stmtUsuario = $conexao->prepare($excluirUsuarioSQL);
-$stmtUsuario->bind_param("i", $_GET['Excluir']);
-if (!$stmtUsuario->execute()) {
-    $transacao_sucesso = false;
-}
+    $excluirUsuarioSQL = "DELETE FROM Usuario_geral WHERE ID = ?";
+    $stmtUsuario = $conexao->prepare($excluirUsuarioSQL);
+    $stmtUsuario->bind_param("i", $_GET['Excluir']);
+    if (!$stmtUsuario->execute()) {
+        $transacao_sucesso = false;
+    }
 
-// Verifica o resultado da transação e executa COMMIT ou ROLLBACK
-if ($transacao_sucesso) {
-    $conexao->commit();
-} else {
-    $conexao->rollback();
-    echo "Erro ao excluir dados.";
-}
+    // Verifica o resultado da transação e executa COMMIT ou ROLLBACK
+    if ($transacao_sucesso) {
+        $conexao->commit();
+    } else {
+        $conexao->rollback();
+        echo "Erro ao excluir dados.";
+    }
 
-$conexao->autocommit(TRUE);
+    $conexao->autocommit(TRUE);
 
-    header("Location: home.php?dir=paginas_adm&file=lista_usuarios");
-    exit();
+        header("Location: home.php?dir=paginas_adm&file=lista_usuarios");
+        exit();
 }
 
 

@@ -1,5 +1,5 @@
 <?php
-require_once "conexao.php";
+require_once "./paginas/conexao.php";
 $conexao = novaConexao();
 $sql= "SELECT Categoria, COUNT(Categoria) AS qntd
         FROM produto

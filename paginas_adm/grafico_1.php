@@ -1,5 +1,5 @@
 <?php
-require_once "conexao.php";
+require_once "./paginas/conexao.php";
 $conexao = novaConexao();
 $sql= "SELECT Publico_alvo, COUNT(Publico_alvo) AS qntd
         FROM produto

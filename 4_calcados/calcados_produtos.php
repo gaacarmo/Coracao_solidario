@@ -8,7 +8,7 @@
     $sql = "SELECT Produto.ID,Produto.Nome,Calcado.Tamanho_calcado,Imagem.Caminho_imagem FROM Produto 
     INNER JOIN Imagem ON Imagem.ID_produto = Produto.ID 
     INNER JOIN Calcado ON Calcado.ID_produto = produto.ID
-    WHERE Produto.Categoria = 'Calçado'";
+    WHERE Produto.Categoria = 'Calçado' AND Produto.Usuario_admin IS NOT NULL";
     $stmt = $conexao->prepare($sql);
     if($stmt->execute()){
         $resultado = $stmt->get_result();

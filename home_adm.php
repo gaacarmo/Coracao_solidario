@@ -12,14 +12,14 @@
             <a href="./index_adm.php">
                 <img class="logo" src="./assets/logo coracao.png" alt="Coração Solidário">
             </a>
-             <a class="texto-titulo">Coração Solidário</a>
+            <a class="texto-titulo">Coração Solidário</a>
     </div>
 
     <nav>
         <ul>
         <li><a href="home_adm.php?dir=paginas_adm&file=lista_usuarios" class="active">Gerenciar usuários</a></li>
             <li><a href="home_adm.php?dir=paginas_adm&file=tela_inicial_graficos" class="active">Relatório estatístico</a></li>
-            <li><a href="#" class="active">Analisar produtos</a></li>
+            <li><a href="home_adm.php?dir=paginas_adm&file=analise_produtos" class="active">Analisar produtos</a></li>
         </ul>
 </nav>
 <div class="admin">
@@ -30,6 +30,7 @@
 <main class="principal">
     <div class="conteudo">
         <?php
+        session_start();
         // Verifica se 'dir' e 'file' estão definidos e não estão vazios
         if (isset($_GET['dir']) && isset($_GET['file']) && !empty($_GET['dir']) && !empty($_GET['file'])) {
             $dir = preg_replace('/[^a-zA-Z0-9-_]/', '', $_GET['dir']); // Sanitiza o nome do diretório
