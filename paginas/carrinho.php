@@ -15,10 +15,8 @@
 require_once 'conexao.php';
 $conexao = novaConexao();
 
-// Verifica se o botão "Finalizar pedido" foi clicado
 if (isset($_POST['finalizar'])) {
     if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
-        // Obter o ID do cliente pelo nome de usuário
         $sqlCliente = "SELECT ID FROM Cliente WHERE Usuario_cliente = ?";
         $stmtCliente = $conexao->prepare($sqlCliente);
         $stmtCliente->bind_param("s", $_SESSION['username']);
@@ -29,7 +27,6 @@ if (isset($_POST['finalizar'])) {
             $cliente = $resultCliente->fetch_assoc();
             $idCliente = $cliente['ID'];
 
-            // Inserir os dados na tabela Entrega, verificando duplicatas
             $sqlVerificar = "SELECT COUNT(*) AS total FROM Entrega WHERE ID_produto = ? AND ID_cliente = ?";
             $sqlEntrega = "INSERT INTO Entrega (ID_produto, ID_cliente, Status_pedido) VALUES (?, ?, ?)";
             $stmtVerificar = $conexao->prepare($sqlVerificar);
@@ -42,14 +39,12 @@ if (isset($_POST['finalizar'])) {
                 $row = $resultVerificar->fetch_assoc();
 
                 if ($row['total'] == 0) {
-                    // Somente insere se o registro ainda não existir
                     $statusPedido = "Em espera";
                     $stmtEntrega->bind_param("iis", $idProduto, $idCliente, $statusPedido);
                     $stmtEntrega->execute();
                 }
             }
 
-            // Limpa o carrinho após finalizar o pedido
             unset($_SESSION['carrinho']);
             echo "<script>alert('Pedido finalizado com sucesso!'); window.location.href = './index.php';</script>";
         } else {
@@ -61,7 +56,6 @@ if (isset($_POST['finalizar'])) {
 }
 
 if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
-    // Preparar a consulta para buscar os dados dos produtos
     $placeholders = implode(',', array_fill(0, count($_SESSION['carrinho']), '?'));
     $sql = "SELECT Produto.ID, Produto.Nome, Produto.Descricao, Imagem.Caminho_imagem
             FROM Produto

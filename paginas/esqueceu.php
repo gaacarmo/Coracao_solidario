@@ -150,7 +150,6 @@ footer{
 
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Captura os dados do formulário
     $novaSenha = $_POST['nova_senha'] ?? '';
     $confirmaSenha = $_POST['nova_senha_c'] ?? '';
     $email = $_POST['email'] ?? '';
@@ -161,20 +160,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($novaSenha !== $confirmaSenha) {
         echo "<p style='color: red; text-align: center;'>As senhas não conferem. Por favor, tente novamente.</p>";
     } else {
-        // Inclui o arquivo de conexão
         require_once 'conexao.php';
 
-        // Estabelece conexão com o banco
         $conn = novaConexao();
 
-        // Verifica se o email existe no banco de dados na tabela usuario_geral
         $sql = $conn->prepare("SELECT id FROM usuario_geral WHERE Email = ? LIMIT 1");
         $sql->bind_param('s', $email);
         $sql->execute();
         $result = $sql->get_result();
 
         if ($result->num_rows > 0) {
-            // Atualiza a senha no banco de dados na tabela cliente
             $update = $conn->prepare("UPDATE cliente SET Senha_cliente = ? WHERE id = (SELECT id FROM usuario_geral WHERE Email = ?)");
             $update->bind_param('ss', $novaSenha, $email);
 
@@ -189,7 +184,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "<p style='color: red; text-align: center;'>Email não encontrado no banco de dados.</p>";
         }
 
-        // Fecha a conexão
         $sql->close();
         $conn->close();
     }

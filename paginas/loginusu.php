@@ -1,10 +1,9 @@
 <?php
-$erros = []; // Inicialização da variável de erros
+$erros = []; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $dados = $_POST;
 
-    // Validações
     if (empty($dados['Usuario_cliente']) || strlen(trim($dados['Usuario_cliente'])) < 3 || strlen(trim($dados['Usuario_cliente'])) > 20) {
         $erros['Usuario_cliente'] = "O nome de usuário deve ter entre 3 e 20 caracteres.";
     }
@@ -13,9 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $erros['Senha_cliente'] = "A senha deve ter entre 3 e 20 caracteres.";
     }
 
-    // Se não houver erros, prosseguir com a validação no banco de dados
     if (count($erros) == 0) {
-        require_once("conexao.php");
+        require_once "conexao.php";
         $conexao = novaConexao();
 
         $sql = "SELECT * FROM Cliente WHERE Usuario_cliente=? AND Senha_cliente=?";
@@ -44,27 +42,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $result2 = $stmt2->get_Result();
                     if ($result2->num_rows > 0) {
                         $row = $result2->fetch_assoc();
-                        $_SESSION['id_cliente'] = $row['ID']; // Armazena o ID na sessão
+                        $_SESSION['id_cliente'] = $row['ID'];
                     }
                 }
-                // Login bem-sucedido
-                // Aqui você pode redirecionar o usuário ou iniciar uma sessão
                 unset($dados);
                 header("Location: index.php");
                 exit;
             } else {
-                // Usuário ou senha incorretos
                 $erros['login'] = "Nome de usuário ou senha incorretos.";
             }
         } else {
-            // Tratar erros na consulta
             $erros['db'] = "Erro ao consultar cliente: " . $stmt->error;
         }
     }
 }
 ?>
 
-<!-- Formulário HTML -->
 <link rel="stylesheet" href="./CSS/login.css">
 
 <h1>Login</h1>

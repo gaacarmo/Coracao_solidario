@@ -8,8 +8,7 @@ if (!(isset($_SESSION['is_logged_admin'])) || $_SESSION['is_logged_admin'] !== t
     exit;
 }
 ?>
-<style>
- 
+<style> 
 
     .products {
     display: flex;

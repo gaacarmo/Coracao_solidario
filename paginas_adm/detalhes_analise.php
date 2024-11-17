@@ -14,16 +14,13 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Verifica se a conexão foi estabelecida
 if (!$conexao) {
     die("<p>Erro na conexão com o banco de dados.</p>");
 }
 
-// Verifica se o código do produto foi passado
 if (isset($_GET['codigo']) && is_numeric($_GET['codigo'])) {
     $codigo = (int)$_GET['codigo'];
 
-    // Consulta para recuperar os dados do produto
     $sql = 'SELECT Cliente.Bairro, Cliente.Logradouro, Cliente.Numero, Usuario_geral.Telefone, 
                 Produto.Nome, Produto.Categoria, Produto.Publico_alvo, Produto.Descricao, 
                 Roupa.Tamanho_roupa, Calcado.Tamanho_calcado, Produto.Condicao, Imagem.Caminho_imagem
@@ -85,7 +82,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->bind_param('i', $codigo);
                 $stmt->execute();
 
-                // Deleta categoria específica
                 if ($tamanho === "Calçado") {
                     $deletaCategoria = "DELETE FROM Calcado WHERE ID_produto = ?";
                 } elseif ($tamanho === "Roupa") {
@@ -98,23 +94,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt2->bind_param('i', $codigo);
                 $stmt2->execute();
 
-                // Deleta da tabela de cadastro
                 $deletaCadastro = "DELETE FROM Cadastro_produto WHERE ID_produto = ?";
                 $stmt3 = $conexao->prepare($deletaCadastro);
                 $stmt3->bind_param('i', $codigo);
                 $stmt3->execute();
 
-                // Deleta o produto
                 $deletaProduto = "DELETE FROM Produto WHERE ID = ?";
                 $stmt4 = $conexao->prepare($deletaProduto);
                 $stmt4->bind_param('i', $codigo);
                 $stmt4->execute();
 
-                // Confirma a transação
                 $conexao->commit();
                 echo "<script>alert('Produto recusado e removido com sucesso');</script>";
             } catch (Exception $e) {
-                // Reverte a transação em caso de erro
                 $conexao->rollback();
                 echo "<p>Erro ao recusar o produto: " . htmlspecialchars($e->getMessage()) . "</p>";
             }
@@ -154,7 +146,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     .Titulo {
         text-align: center;
     }
-    /* CSS atualizado para a página detalhes_produto.css */
 
 
 
@@ -244,7 +235,6 @@ h1.Titulo {
     background-color: #32a000;
 }
 
-/* Estilo responsivo */
 @media (min-width: 768px) {
     .container_principal {
         flex-direction: row;

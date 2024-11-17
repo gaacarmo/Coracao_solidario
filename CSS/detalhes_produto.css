@@ -62,17 +62,17 @@
 
 .container_botao {
     display: flex;
-    justify-content: center; /* Centraliza o botão horizontalmente */
-    align-items: center; /* Centraliza o botão verticalmente, caso o contêiner tenha altura fixa */
-    margin-top: 20px; /* Espaço opcional acima do botão */
+    justify-content: center; 
+    align-items: center; 
+    margin-top: 20px; 
 }
 
 .container_botao form button {
     padding: 10px;
-    background-color: #555555; /* Cinza médio-escuro */
-    color: #ffffff; /* Texto branco para contraste */
-    border: 1px solid #444444; /* Borda ligeiramente mais escura */
-    border-radius: 5px; /* Bordas arredondadas */
+    background-color: #555555; 
+    color: #ffffff; 
+    border: 1px solid #444444; 
+    border-radius: 5px; 
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
@@ -80,9 +80,9 @@
 }
 
 .container_botao form button:hover {
-    background-color: #333333; /* Cinza ainda mais escuro no hover */
-    color: #f0f0f0; /* Texto um pouco mais claro no hover */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    background-color: #333333; 
+    color: #f0f0f0; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 

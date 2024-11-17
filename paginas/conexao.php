@@ -8,7 +8,7 @@ function novaConexao($banco = 'brecho'){
     $conexao = new mysqli($sever, $username, $password, $banco);
 
     if($conexao->connect_error){
-        die ('Error'. $conexao->connect_error);#nao é muito bom de se usar 
+        die ('Error'. $conexao->connect_error);
         
     }
     return $conexao;

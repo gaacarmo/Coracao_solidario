@@ -42,7 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt2->bind_param("sssi", ...$params2);
         if ($stmt2->execute()) {
             
-            // Inserindo na tabela Cadastro_produto
             $sql3 = "INSERT INTO Cadastro_produto (ID_cliente, ID_produto) VALUES (?,?)";
             $stmt3 = $conexao->prepare($sql3);
             $params3 = [$id_cliente, $produtoID];
@@ -50,7 +49,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($stmt3->execute()) {
                 
-                // Inserindo dados em Calcado ou Roupa com base na Categoria
                 if ($dados['Categoria'] == 'Calçado') {
                     $sql4 = "INSERT INTO Calcado (Tamanho_calcado, Cor_calcado, ID_produto) VALUES (?, ?, ?)";
                     $stmt4 = $conexao->prepare($sql4);
@@ -127,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div class="select">
         <label class="espaçamento" for="PublicoAlvo">Qual o público alvo de seu produto?</label>
-        <select name="Publico_alvo" id="PublicoAlvo" required> <!-- Campo obrigatório --->
+        <select name="Publico_alvo" id="PublicoAlvo" required>
             <option value="">Selecione</option>
             <option value="Masculino">Masculino</option>
             <option value="Feminino">Feminino</option>
@@ -137,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div class="select">
         <label class="espaçamento" for="CategoriaProduto">Selecione a categoria do produto</label>
-        <select name="Categoria" id="CategoriaProduto" required> <!-- Campo obrigatório --->
+        <select name="Categoria" id="CategoriaProduto" required>
             <option value="">Selecione</option>
             <option value="Calçado">Calçado</option>
             <option value="Roupa">Roupa</option> 
@@ -146,7 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div class="select">
         <label class="espaçamento" for="TamanhoProduto">Selecione o tamanho do produto</label>
-        <select name="Tamanho" id="TamanhoProduto" required> <!-- Campo obrigatório --->
+        <select name="Tamanho" id="TamanhoProduto" required>
             <option value="">Selecione</option>
             <option value="P">P</option>
             <option value="M">M</option>
@@ -164,7 +162,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="condicao_status">
             <div>
                 <label for="">Usado</label>
-                <input type="radio" name="Condicao" id="Usado" value="Usado" required> <!-- Campo obrigatório --->
+                <input type="radio" name="Condicao" id="Usado" value="Usado" required>
             </div>
             <div>
                 <label for="">Semiusado</label>
@@ -179,7 +177,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div>
         <label class="espaçamento" for="CorProduto">Qual a cor do produto?</label>
-        <input type="text" name="Cor" id="CorProduto" placeholder="Ex: Azul" class="input" required> <!-- Campo obrigatório --->
+        <input type="text" name="Cor" id="CorProduto" placeholder="Ex: Azul" class="input" required>
     </div>
     
     <div class="endereco">
@@ -195,18 +193,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div>
         <label class="espaçamento" for="DescricaoProduto">Descrição do produto</label>
-        <textarea name="Descricao" id="DescricaoProduto" class="descrição" required></textarea> <!-- Campo obrigatório --->
+        <textarea name="Descricao" id="DescricaoProduto" class="descrição" required></textarea>
     </div>
 
     <div>
         <label class="espaçamento" for="ImagemProduto">Coloque uma ou mais imagens</label>
-        <input type="file" name="Imagem[]" id="ImagemProduto" accept="image/*" multiple required> <!-- Campo obrigatório --->
+        <input type="file" name="Imagem[]" id="ImagemProduto" accept="image/*" multiple required>
     </div>  
 
     <div>
         <button type="reset">Limpar formulário</button>
         <button type="submit">Enviar </button>
-        <button type="button" onclick="window.location.href='index.php'">Cancelar</button> <!-- Retorna para a página principal --->
+        <button type="button" onclick="window.location.href='index.php'">Cancelar</button>
     </div>
 </form>
 

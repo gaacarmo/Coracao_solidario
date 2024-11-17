@@ -6,9 +6,8 @@ require_once './paginas/conexao.php';
 $conexao = novaConexao();
 
 if (isset($_GET['codigo'])) {
-    $codigo = (int)$_GET['codigo'];  // Recupera o código do produto da URL
+    $codigo = (int)$_GET['codigo']; 
 
-    // Consulta para recuperar os dados do produto
     $sql = 'SELECT Cliente.Bairro, Cliente.Logradouro, Cliente.Numero, Usuario_geral.Telefone, 
                 Produto.Nome, Produto.Categoria, Produto.Publico_alvo, Produto.Descricao, 
                 Roupa.Tamanho_roupa, Produto.Condicao, Imagem.Caminho_imagem
@@ -40,19 +39,17 @@ if (isset($_GET['codigo'])) {
     exit;
 }
 
-// Verificar se o botão de adicionar ao carrinho foi clicado
 if (isset($_POST['adicionar'])) {
-    $codigo_produto = (int)$_POST['codigo'];  // Obtém o código do produto do formulário
+    $codigo_produto = (int)$_POST['codigo'];
     header('location: home.php?dir=paginas&&file=carrinho');
 
-    // Verificar se o carrinho já existe na sessão
+
     if (!isset($_SESSION['carrinho'])) {
-        $_SESSION['carrinho'] = array();  // Criar o carrinho caso não exista
+        $_SESSION['carrinho'] = array(); 
     }
 
-    // Adicionar o produto ao carrinho
     if (!in_array($codigo_produto, $_SESSION['carrinho'])) {
-        $_SESSION['carrinho'][] = $codigo_produto;  // Adiciona o código do produto ao carrinho
+        $_SESSION['carrinho'][] = $codigo_produto;
     }
 }
 ?>
@@ -77,10 +74,8 @@ if (isset($_POST['adicionar'])) {
 
 </main>
 
-<!-- Formulário para adicionar ao carrinho -->
 <div class="container_botao">
     <form method="POST">
-        <!-- Passar o código do produto como um campo oculto -->
         <input type="hidden" name="codigo" value="<?php echo $codigo; ?>">
         <button type="submit" name="adicionar">Adicionar ao carrinho</button>
     </form>

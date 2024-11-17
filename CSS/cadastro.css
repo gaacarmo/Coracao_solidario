@@ -13,7 +13,6 @@
     margin: auto;
 }
 
-/* Estilo dos inputs */
 .input {
     width: 100%;
     padding: 12px;
@@ -29,7 +28,6 @@
     outline: none;
 }
 
-/* Labels */
 label {
     font-size: 16px;
     color: #333;
@@ -66,7 +64,6 @@ label {
 
 
 
-/* Caixa de entrada e seus efeitos */
 .inputForm {
     border: 1.5px solid #d3d3d3;
     border-radius: 8px;
@@ -88,14 +85,12 @@ label {
     color: #333333;
 }
 
-/* Estilo do alerta */
 .alerta {
     color: #FF5252;
     font-size: 14px;
     margin-top: 5px;
 }
 
-/* Estilo para links e ícones de voltar */
 .voltar {
     height: 30px;
     position: absolute;

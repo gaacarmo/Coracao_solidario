@@ -77,7 +77,6 @@ if(count($_POST) > 0){
         }
     } 
 
-    // Se não houver erros, prosseguir com a inserção
     if(count($erros) == 0){
         require_once "conexao.php";
         $conexao = novaConexao();   
@@ -102,22 +101,18 @@ if(count($_POST) > 0){
             $stmt2 = $conexao->prepare($sql2);
 
             $params2 = [
-                $dados['Usuario_cliente'], // Garantido que não seja nulo
+                $dados['Usuario_cliente'],
                 $dados['Senha_cliente'],
                 $id_usuario
             ];
             $stmt2->bind_param("ssi", ...$params2);
 
-            // Executar a segunda inserção
             if($stmt2->execute()){
                 unset($dados); 
-                // Opcional: redirecionar ou mostrar mensagem de sucesso
             } else {
-                // Tratar erros na segunda inserção
                 $erros['insert'] = "Erro ao inserir cliente: " . $stmt2->error;
             }
         } else {
-            // Tratar erros na primeira inserção
             $erros['insert'] = "Erro ao inserir usuário: " . $stmt1->error;
         }
     }

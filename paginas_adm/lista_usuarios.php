@@ -41,7 +41,6 @@ if (isset($_GET['Excluir'])) {
         $transacao_sucesso = false;
     }
 
-    // Verifica o resultado da transação e executa COMMIT ou ROLLBACK
     if ($transacao_sucesso) {
         $conexao->commit();
     } else {
@@ -94,11 +93,11 @@ if (count($registros) > 0) {
                 <td class='registros-tabela'>{$registro['Telefone']}</td>
                 <td class='registros-tabela'>
                     <a class='botao-excluir' href='home.php?dir=paginas_adm&file=lista_usuarios&Excluir=" . $registro['id'] . "' 
-           onclick='return confirm(\"Tem certeza que deseja excluir este usuário?\")'> 
-           Excluir
+            onclick='return confirm(\"Tem certeza que deseja excluir este usuário?\")'> 
+            Excluir
         </a>
                 </td>
-              </tr>";
+            </tr>";
     }
     
     echo "</table>";
@@ -110,7 +109,6 @@ if (count($registros) > 0) {
 <style>
     .titulo{
         text-align: center;
-  
         font-weight: 1.2rem;
     }
     table.tabela {
@@ -119,7 +117,6 @@ if (count($registros) > 0) {
         margin: 3% 0px 0px 30px;
     }
 
-    /* Cabeçalho da Tabela */
     table.tabela th {
         background-color: black;
         color: white;
@@ -127,7 +124,6 @@ if (count($registros) > 0) {
         text-align: left;
     }
 
-    /* Linhas com efeito de zebra */
     table.tabela tr:nth-child(even) {
         background-color: #f2f2f2;
     }
@@ -136,13 +132,11 @@ if (count($registros) > 0) {
         background-color: #ffffff;
     }
 
-    /* Células de dados */
     table.tabela td {
         padding: 10px;
         text-align: left;
     }
 
- /* Botão vermelho de exclusão */
     .botao-excluir {
         display: inline-block;
         padding: 8px 16px;
@@ -159,5 +153,4 @@ if (count($registros) > 0) {
     .botao-excluir:hover {
         background-color: #FF1C1C;
     }
-</style>
 </style>

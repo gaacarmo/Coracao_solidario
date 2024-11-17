@@ -1,26 +1,25 @@
-/* Estilo das estrelas */
+
 .avaliacao {
     display: inline-block;
-    direction: ltr; /* Ordem das estrelas da esquerda para a direita */
+    direction: ltr; 
 }
 
 .star {
     font-size: 2rem;
-    color: #ccc; /* Cor padrão das estrelas */
+    color: #ccc; 
     cursor: pointer;
     transition: color 0.3s ease;
 }
 
 .star:hover,
 .star.hover {
-    color: gold; /* Cor ao passar o mouse */
+    color: gold; 
 }
 
 .star.active {
-    color: gold; /* Cor das estrelas ativas após o clique */
+    color: gold; 
 }
 
-/* Estilo para o feedback */
 #rating-value {
     font-size: 1.2rem;
     margin-left: 10px;

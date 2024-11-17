@@ -63,10 +63,10 @@ if ($resultado->num_rows > 0) {
 </script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChart);
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
 
-      function drawChart() {
+    function drawChart() {
         var data = google.visualization.arrayToDataTable([
             ['Público Alvo', 'Quantidade'],
             <?php
@@ -86,9 +86,9 @@ if ($resultado->num_rows > 0) {
 
         var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
         chart.draw(data, options);
-      }
+    }
     </script>
-   <style>
+<style>
 
 
     

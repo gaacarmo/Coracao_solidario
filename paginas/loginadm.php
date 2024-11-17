@@ -1,10 +1,9 @@
 <?php
-$erros = []; // Inicialização da variável de erros
+$erros = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $dados = $_POST;
 
-    // Validações
     if (empty($dados['Usuario_admin']) || strlen(trim($dados['Usuario_admin'])) < 3 || strlen(trim($dados['Usuario_admin'])) > 20) {
         $erros['Usuario_admin'] = "O nome de usuário deve ter entre 3 e 20 caracteres.";
     }
@@ -13,9 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $erros['Senha_admin'] = "A senha deve ter entre 3 e 20 caracteres.";
     }
 
-    // Se não houver erros, prosseguir com a validação no banco de dados
     if (count($erros) == 0) {
-        require_once("conexao.php");
+        require_once "conexao.php";
         $conexao = novaConexao();
 
         $sql = "SELECT * FROM Administrador_site WHERE Usuario_admin=? AND Senha_admin=?";
@@ -36,18 +34,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 unset($dados);
                 header("Location: index_adm.php");
             } else {
-                // Usuário ou senha incorretos
                 $erros['login'] = "Nome de usuário ou senha incorretos.";
             }
         } else {
-            // Tratar erros na consulta
             $erros['db'] = "Erro ao consultar cliente: " . $stmt->error;
         }
     }
 }
 ?>
 
-<!-- Formulário HTML -->
 <link rel="stylesheet" href="./CSS/login.css">
 
 <h1>Login Admnistrador</h1>

@@ -3,7 +3,6 @@
     <h1>Minhas Doações</h1>
     <a href="./index.php"><img class="voltar" src="assets/de-volta.png" alt="Voltar"></a>
     <?php
-    // Verifica se o usuário está logado
     if (!(isset($_SESSION['is_logged_in'])) || $_SESSION['is_logged_in'] !== true) {
         echo "<script>alert('Para acessar esta página, é necessário fazer login.');
         window.location.href = 'home.php?dir=paginas&&file=loginusu';
@@ -18,21 +17,59 @@ if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true) {
     require_once 'conexao.php';
     $conexao = novaConexao();
 
-    // Verifica se foi enviado o formulário para atualizar o status
     if (isset($_POST['entregaProduto']) && isset($_POST['codigoProduto'])) {
         $codigoProduto = $_POST['codigoProduto'];
-        error_log("Recebido para atualização: ID Produto = $codigoProduto");
 
+        // Atualiza o status do pedido para "Entregue"
         $sqlEntrega = "UPDATE Entrega SET Status_pedido = 'Entregue' WHERE ID_produto = ?";
         $stmtUpdate = $conexao->prepare($sqlEntrega);
-
         if ($stmtUpdate) {
             $stmtUpdate->bind_param("i", $codigoProduto);
             if ($stmtUpdate->execute()) {
-                echo "<script>alert('Status atualizado com sucesso.');</script>";
+                $sqlCategoria = "SELECT Categoria FROM Produto WHERE ID = ?";
+                $stmtCategoria = $conexao->prepare($sqlCategoria);
+                $stmtCategoria->bind_param("i", $codigoProduto);
+                $stmtCategoria->execute();
+                $resultadoCategoria = $stmtCategoria->get_result();
+                $produtoCategoria = $resultadoCategoria->fetch_assoc()['Categoria'];
+
+                if ($produtoCategoria === 'Calçado') {
+                    $sqlDeleteCategoria = "DELETE FROM Calcado WHERE ID_produto = ?";
+                } else {
+                    $sqlDeleteCategoria = "DELETE FROM Roupa WHERE ID_produto = ?";
+                }
+
+                $sqlDeleteImagem = "DELETE FROM Imagem WHERE ID_produto = ?";
+                $sqlDeleteCadastro = "DELETE FROM Cadastro_produto WHERE ID_produto = ?";
+                $sqlDeleteProduto = "DELETE FROM Produto WHERE ID = ?";
+                $sqlDeleteEntrega = "DELETE FROM Entrega WHERE ID_produto = ?";
+
+                $stmtDeleteCategoria = $conexao->prepare($sqlDeleteCategoria);
+                $stmtDeleteCategoria->bind_param("i", $codigoProduto);
+                $stmtDeleteCategoria->execute();
+
+                $stmtDeleteImagem = $conexao->prepare($sqlDeleteImagem);
+                $stmtDeleteImagem->bind_param("i", $codigoProduto);
+                $stmtDeleteImagem->execute();
+
+                $stmtDeleteCadastro = $conexao->prepare($sqlDeleteCadastro);
+                $stmtDeleteCadastro->bind_param("i", $codigoProduto);
+                $stmtDeleteCadastro->execute();
+
+                $stmtDeleteEntrega = $conexao->prepare($sqlDeleteEntrega);
+                $stmtDeleteEntrega->bind_param("i", $codigoProduto);
+                $stmtDeleteEntrega->execute();
+
+                // Excluir produto principal
+                $stmtDeleteProduto = $conexao->prepare($sqlDeleteProduto);
+                $stmtDeleteProduto->bind_param("i", $codigoProduto);
+
+                if( $stmtDeleteProduto->execute()){
+                    echo "<script>alert('Produto entregue e retirado do site com sucesso.');</script>";
+                }
+
             } else {
                 echo "<script>alert('Erro ao atualizar o status: " . $stmtUpdate->error . "');</script>";
-                error_log("Erro ao atualizar: " . $stmtUpdate->error);
             }
             $stmtUpdate->close();
         } else {
@@ -40,11 +77,8 @@ if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true) {
         }
     }
 
-    // ID do cliente logado
     $idClienteLogado = $_SESSION['id_cliente'];
-    error_log("Cliente logado: $idClienteLogado");
 
-    // SQL para buscar os produtos cadastrados pelo cliente logado e solicitados por outro cliente
     $sql = "SELECT 
                 Produto.ID AS ID_Produto,
                 Produto.Nome AS Nome_Produto,
@@ -73,7 +107,6 @@ if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true) {
         die('Erro na preparação da consulta: ' . $conexao->error);
     }
 
-    // Bind do ID do cliente logado como doador e cliente solicitante
     $stmt->bind_param('ii', $idClienteLogado, $idClienteLogado);
 
     if ($stmt->execute()) {
@@ -106,12 +139,10 @@ if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true) {
         echo "</div>";
     } else {
         echo 'Erro na execução da consulta: ' . $stmt->error;
-        error_log("Erro na execução da consulta: " . $stmt->error);
     }
 
     $stmt->close();
     $conexao->close();
-    
 } else {
     echo "<script>alert('É necessário fazer login para acessar esta página.');
     window.location.href = 'home.php?dir=paginas&&file=loginusu';

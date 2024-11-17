@@ -43,8 +43,8 @@
 }
 
 .feedback {
-    text-align: center; /* Centraliza o botão no contêiner */
-    margin-top: 20px; /* Espaço entre a seção e o botão */
+    text-align: center; 
+    margin-top: 20px;
     margin-bottom: 100px;
 }
 
@@ -57,7 +57,7 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    text-decoration: none; /* Remove o sublinhado do link */
+    text-decoration: none; 
 }
 
 .feedback .feedback-button:hover {
