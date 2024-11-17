@@ -30,7 +30,7 @@ if ($resultado->num_rows > 0) {
     <title>Analise de categorias mais cadastradas</title>
 </head>
 <body>
-    <h1 class="titulo">Distribuição por porcentagem das categorias</h1>
+    <h1 class="titulo">Distribuição por porcentagem das Condições</h1>
     <a href="home_adm.php?dir=paginas_adm&file=tela_inicial_graficos"><img class="voltar" src="assets/de-volta.png" alt="Voltar"></a>
     <div class="container">
         <div class="corpo" id="piechart" style="width: 900px; height: 500px;"></div>
@@ -53,7 +53,7 @@ if ($resultado->num_rows > 0) {
         ]);
 
         var options = {
-            title: 'Roupa e Calçado',
+            title: 'Usado, Semiusado e Novo',
             is3D: true,
         };
 
@@ -68,7 +68,7 @@ if ($resultado->num_rows > 0) {
 
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
-            ['Público Alvo', 'Quantidade'],
+            ['Categoria', 'Quantidade'],
             <?php
             foreach ($registros as $registro) {
                 echo "['" . $registro['Categoria'] . "', " . $registro['qntd'] . "],";
@@ -77,7 +77,7 @@ if ($resultado->num_rows > 0) {
         ]);
 
         var options = {
-            title: 'Roupa e Calçado',
+            
             titleTextStyle: { fontSize: 20, bold: true },
             legend: { position: 'right', textStyle: { fontSize: 14 } },
             chartArea: { width: '50%', height: '80%' }

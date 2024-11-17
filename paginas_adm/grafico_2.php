@@ -30,7 +30,7 @@ if ($resultado->num_rows > 0) {
     <title>Analise de categorias mais cadastradas</title>
 </head>
 <body>
-    <h1 class="titulo">Distribuição por porcentagem do Público Alvo</h1>
+    <h1 class="titulo">Distribuição por porcentagem da Categoria</h1>
     <a href="home_adm.php?dir=paginas_adm&file=tela_inicial_graficos"><img class="voltar" src="assets/de-volta.png" alt="Voltar"></a>
     <div class="container">
         <div class="corpo" id="piechart" style="width: 1000px; height: 500px;"></div>
