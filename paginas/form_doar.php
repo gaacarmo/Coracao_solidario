@@ -93,6 +93,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             }
                         }
                     }
+                    echo "<script>
+                            alert('Produto cadastrado com sucesso!');
+                            window.location.href = 'index.php';
+                            </script>";
+                    exit();
 
                 }else{
                     echo "Erro ao inserir na tabela Imagem: " . $stmt4->error;
