@@ -70,7 +70,7 @@ CREATE TABLE Entrega(
 
 CREATE TABLE Roupa(
 	ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    Tamanho_roupa VARCHAR(3) NOT NULL,
+    Tamanho_roupa VARCHAR(5) NOT NULL,
     Cor_roupa VARCHAR(19) NOT NULL,
     ID_produto INT NOT NULL,
     FOREIGN KEY(ID_produto) REFERENCES Produto(ID)
@@ -78,7 +78,7 @@ CREATE TABLE Roupa(
 
 CREATE TABLE Calcado (
 	ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    Tamanho_calcado VARCHAR(3) NOT NULL,
+    Tamanho_calcado VARCHAR(5) NOT NULL,
     Cor_calcado VARCHAR(19) NOT NULL,
     ID_produto INT NOT NULL,
     FOREIGN KEY(ID_produto) REFERENCES Produto(ID)
