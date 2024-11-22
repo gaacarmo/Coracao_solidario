@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <link rel="stylesheet" href="./CSS/login.css">
 
-<h1>Login Admnistrador</h1>
+<h1>Login Administrador</h1>
 <a href="home.php?dir=paginas&file=loginusu"><img class="voltar" src="assets/de-volta.png" alt="Voltar"></a>
 <form class="form" method="post">
     <div class="flex-column">
